@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>비북스 b.books — 부천 원미동 동네서점</title>
+<meta name="description" content="부천 원미동, 104칸의 0.1평 서점이 모인 동네책방 비북스. 서가를 나누고, 모임을 열고, 공간을 빌려드립니다.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="비북스 b.books — 부천 원미동 동네서점">
+<meta property="og:description" content="104칸의 0.1평 서점이 모인 동네책방. 서가를 나누고, 모임을 열고, 공간을 빌려드립니다.">
+<meta property="og:image" content="https://yonghee0330.github.io/bbooks-home/images/og.jpg">
+<meta property="og:url" content="https://yonghee0330.github.io/bbooks-home/">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,400&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3ede2;
+    --paper-2: #ebe3d4;
+    --card: #fbf8f2;
+    --ink: #2b211b;
+    --ink-2: #4f4239;
+    --muted: #8a7b6e;
+    --line: #d9cebd;
+    --rule: rgba(43, 33, 27, .09);
+    --stamp: #b8432a;
+    --serif: 'Gowun Batang', 'Noto Serif KR', 'AppleMyungjo', serif;
+    --mono: 'Courier Prime', 'Courier New', monospace;
+    --display: 'Fraunces', Georgia, serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 16.5px;
+    line-height: 1.85;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  /* paper grain */
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 50;
+    opacity: .35; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .3 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  a { color: inherit; }
+  img { display: block; max-width: 100%; height: auto; }
+  ::selection { background: #e7d3b8; }
+
+  .label {
+    font-family: var(--mono); font-size: 12.5px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--muted);
+  }
+
+  /* ── layout: Thanks Books style left index ── */
+  .wrap { display: grid; grid-template-columns: 230px minmax(0, 1fr); max-width: 1120px; margin: 0 auto; }
+  .side {
+    position: sticky; top: 0; height: 100vh; padding: 44px 28px 32px 32px;
+    display: flex; flex-direction: column; gap: 36px;
+  }
+  .logo { text-decoration: none; display: block; }
+  .logo b { font-family: var(--display); font-weight: 600; font-size: 34px; letter-spacing: -.02em; line-height: 1; display: block; }
+  .logo span { font-size: 13px; color: var(--ink-2); display: block; margin-top: 6px; }
+  .index { list-style: none; font-family: var(--mono); font-size: 13.5px; }
+  .index li + li { margin-top: 4px; }
+  .index a { text-decoration: none; color: var(--ink-2); display: inline-block; padding: 2px 0; }
+  .index a:hover, .index a.on { color: var(--ink); }
+  .index a.on::before { content: "→ "; color: var(--stamp); }
+  .side-foot { margin-top: auto; font-size: 12.5px; color: var(--muted); line-height: 1.7; }
+  .side-foot a { text-decoration: none; border-bottom: 1px solid var(--line); }
+
+  main { padding: 44px 48px 0 40px; border-left: 1px solid var(--line); min-width: 0; }
+  section { max-width: 720px; padding: 64px 0; border-top: 1px dashed var(--line); scroll-margin-top: 20px; }
+  section:first-child { border-top: 0; padding-top: 0; }
+  .sec-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 26px; }
+  .sec-head .no { font-family: var(--mono); color: var(--stamp); font-size: 13px; }
+  h2 { font-size: 23px; font-weight: 700; letter-spacing: -.01em; }
+  p + p { margin-top: 1em; }
+  .lead { font-size: 18px; }
+  .muted { color: var(--muted); }
+
+  /* ── photos as prints ── */
+  .print {
+    background: #fffdf8; padding: 10px 10px 34px; position: relative;
+    box-shadow: 0 1px 1px rgba(43,33,27,.08), 0 10px 26px -12px rgba(43,33,27,.28);
+  }
+  .print img { filter: sepia(.18) saturate(.88) contrast(.96); }
+  .print figcaption {
+    position: absolute; left: 12px; right: 12px; bottom: 8px;
+    font-family: var(--mono); font-size: 12px; color: var(--muted);
+  }
+  .tape::before {
+    content: ""; position: absolute; top: -11px; left: 50%; width: 96px; height: 24px;
+    transform: translateX(-50%) rotate(-2deg);
+    background: rgba(226, 213, 184, .78); box-shadow: 0 1px 2px rgba(0,0,0,.06);
+  }
+
+  /* ── 00 opening ── */
+  .open-quote { font-size: 26px; line-height: 1.6; font-weight: 700; letter-spacing: -.015em; margin: 6px 0 30px; }
+  .open-quote em { font-style: normal; background: linear-gradient(transparent 62%, #e9d6b7 62%); }
+  .hero { margin: 0 0 34px; transform: rotate(-.6deg); }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 26px; font-family: var(--mono); font-size: 13px; color: var(--ink-2); }
+  .facts b { font-family: var(--serif); font-size: 15px; color: var(--ink); margin-right: 4px; }
+
+  /* ── 01 history ledger ── */
+  .ledger { list-style: none; border-top: 1px solid var(--ink); }
+  .ledger li {
+    display: grid; grid-template-columns: 92px 1fr; gap: 18px;
+    padding: 14px 0 15px; border-bottom: 1px solid var(--rule);
+  }
+  .ledger time { font-family: var(--mono); font-size: 14px; color: var(--stamp); padding-top: 2px; }
+  .ledger strong { display: block; font-size: 16.5px; }
+  .ledger span { display: block; font-size: 14.5px; color: var(--ink-2); line-height: 1.7; margin-top: 2px; }
+  .ledger li.now time::after { content: " ●"; font-size: 9px; vertical-align: 3px; }
+
+  /* ── 02 what we do: Lisbon-style poster cards ── */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); text-decoration: none;
+    display: flex; flex-direction: column; transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .card:hover { transform: translateY(-3px) rotate(-.3deg); box-shadow: 0 14px 28px -16px rgba(43,33,27,.35); }
+  .card .ph { aspect-ratio: 4 / 5; overflow: hidden; border-bottom: 1px solid var(--line); }
+  .card .ph img { width: 100%; height: 100%; object-fit: cover; filter: sepia(.2) saturate(.85) contrast(.96); }
+  .card .body { padding: 16px 16px 18px; display: flex; flex-direction: column; flex: 1; }
+  .card .kicker { font-family: var(--mono); font-size: 11.5px; letter-spacing: .12em; color: var(--muted); }
+  .card h3 { font-size: 19px; margin: 4px 0 8px; }
+  .card p { font-size: 14px; line-height: 1.75; color: var(--ink-2); }
+  .card .go { margin-top: auto; padding-top: 14px; font-family: var(--mono); font-size: 12.5px; color: var(--ink); }
+  .card .go::after { content: " →"; color: var(--stamp); }
+  .also { margin-top: 22px; font-size: 14.5px; color: var(--ink-2); }
+
+  /* ── 03 name ── */
+  .names { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); margin-top: 26px; }
+  .names div { padding: 18px 16px 18px 0; }
+  .names div + div { padding-left: 16px; border-left: 1px solid var(--line); }
+  .names b { font-family: var(--display); font-style: italic; font-weight: 400; font-size: 30px; line-height: 1; display: block; margin-bottom: 8px; }
+  .names span { font-size: 14px; color: var(--ink-2); line-height: 1.7; display: block; }
+
+  /* ── 04 visit ── */
+  .visit { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; align-items: start; }
+  dl div { padding: 11px 0; border-bottom: 1px solid var(--rule); }
+  dl div:first-child { border-top: 1px solid var(--ink); }
+  dt { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; color: var(--muted); }
+  dd { font-size: 15.5px; }
+  dd a { text-decoration: none; border-bottom: 1px solid var(--line); }
+  .visit .print { transform: rotate(1deg); margin-top: 8px; }
+  .btn-line {
+    display: inline-block; margin-top: 18px; padding: 9px 16px; border: 1px solid var(--ink);
+    font-family: var(--mono); font-size: 13px; text-decoration: none; background: transparent;
+    transition: background .2s, color .2s;
+  }
+  .btn-line:hover { background: var(--ink); color: var(--paper); }
+
+  footer { max-width: 720px; padding: 40px 0 56px; border-top: 1px solid var(--ink); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  footer .label { letter-spacing: .1em; }
+
+  /* ── mobile ── */
+  @media (max-width: 860px) {
+    .wrap { display: block; }
+    .side {
+      position: sticky; top: 0; z-index: 20; height: auto; padding: 14px 16px 0;
+      gap: 10px; background: var(--paper); border-bottom: 1px solid var(--line);
+    }
+    .logo { display: flex; align-items: baseline; gap: 10px; }
+    .logo b { font-size: 24px; }
+    .logo span { margin: 0; font-size: 12.5px; }
+    .index { display: flex; gap: 18px; overflow-x: auto; white-space: nowrap; padding-bottom: 10px; scrollbar-width: none; font-size: 13px; }
+    .index::-webkit-scrollbar { display: none; }
+    .index li + li { margin-top: 0; }
+    .side-foot { display: none; }
+    main { padding: 28px 16px 0; border-left: 0; }
+    section { padding: 48px 0; scroll-margin-top: 96px; }
+    .open-quote { font-size: 21px; }
+    .cards { grid-template-columns: 1fr; gap: 16px; }
+    .card { flex-direction: row; }
+    .card .ph { aspect-ratio: auto; width: 38%; flex: none; border-bottom: 0; border-right: 1px solid var(--line); }
+    .names { grid-template-columns: 1fr; }
+    .names div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+    .visit { grid-template-columns: 1fr; gap: 26px; }
+    .ledger li { grid-template-columns: 74px 1fr; gap: 12px; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .card { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <aside class="side">
+    <a class="logo" href="#top"><b>b.books</b><span>비북스 · 부천 원미동</span></a>
+    <nav aria-label="목차">
+      <ul class="index">
+        <li><a href="#about">비북스</a></li>
+        <li><a href="#history">걸어온 길</a></li>
+        <li><a href="#work">하는 일</a></li>
+        <li><a href="#name">이름</a></li>
+        <li><a href="#visit">찾아오기</a></li>
+      </ul>
+    </nav>
+    <div class="side-foot">
+      OPEN 10:00 — 18:00<br>
+      <a href="tel:050713534850">0507-1353-4850</a><br>
+      <a href="https://www.instagram.com/b_books2026/" target="_blank" rel="noopener">@b_books2026</a>
+    </div>
+  </aside>
+
+  <main id="top">
+
+    <section id="about">
+      <p class="label">Bucheon · Wonmi-dong · since 2026</p>
+      <h1 class="open-quote">세상에서 가장 작은 서점들이<br><em>한 지붕 아래</em> 모여 있습니다.</h1>
+      <figure class="print tape hero">
+        <img src="images/shelves.jpg" width="1600" height="900" alt="비북스 매장. 벽을 따라 칸칸이 나뉜 나무 서가와 스탠드 조명">
+        <figcaption>B02, 부천로136번길 24</figcaption>
+      </figure>
+      <p class="lead">비북스는 원미구청 맞은편, 오래된 용서점이 있던 자리에 문을 연 동네책방입니다.</p>
+      <p>벽을 따라 늘어선 서가를 0.1평씩 104칸으로 나눴습니다. 한 칸마다 주인이 있고, 주인마다 고른 책이 다릅니다. 그래서 이곳에는 하나의 큰 서점 대신 백 개의 작은 서점이 있습니다. 서가를 채운 사람들이 모임을 열고, 손님이 다시 서가의 주인이 되면서 책방은 조금씩 자라고 있습니다.</p>
+      <div class="facts">
+        <span><b>104</b>칸의 0.1평 서점</span>
+        <span><b>매달</b> 열리는 비모임</span>
+        <span><b>5</b>가지 대관 공간</span>
+      </div>
+    </section>
+
+    <section id="history">
+      <div class="sec-head"><span class="no">01</span><h2>걸어온 길</h2></div>
+      <ol class="ledger">
+        <li><time>2026.05</time><div><strong>비북스, 문을 열다</strong><span>0.1평 서점의 첫 점주들을 모으고 서가를 채우기 시작했습니다.</span></div></li>
+        <li><time>2026.05</time><div><strong>첫 작가와의 만남, 첫 밤샘 독서</strong><span>b.talks 박동수 편집장 『철학책 독서 모임』 · 밤밀온 EP.1 『원미동 사람들』 · 첫 b.box day 마켓</span></div></li>
+        <li><time>2026.06</time><div><strong>비모임 시작</strong><span>점주들이 직접 여는 월간 모임이 열리기 시작했습니다. 첫 b.voice, 느린호수 &amp; 앗트의 듀엣 북토크.</span></div></li>
+        <li><time>2026.07</time><div><strong>0.1평 서점 정식 운영</strong><span>104칸 중 91칸이 채워진 채 정식 운영을 시작했습니다. b.talks 권혁란 작가 『이름의 빈자리에』, 달빛리딩클럽.</span></div></li>
+        <li><time>2026.08</time><div><strong>이야기가 늘어나다</strong><span>b.talks 이수영 작가 『선을 넘는 북클럽』, 어린이와 함께하는 b.grow, 점주들의 b.voice 세 차례.</span></div></li>
+        <li><time>2026.09</time><div><strong>두 번째 b.box day</strong><span>박스 하나에 담긴 0.1평 서점들이 매장을 가득 채웠습니다. b.talks 김은영 작가, 『토지』 100일 완독 챌린지 시작.</span></div></li>
+        <li class="now"><time>2026.10</time><div><strong>1인실을 열다</strong><span>세미나실, 매장 테이블, 계단 좌석에 이어 혼자 머무는 1인실을 열고 대관 안내를 새로 정리했습니다.</span></div></li>
+      </ol>
+    </section>
+
+    <section id="work">
+      <div class="sec-head"><span class="no">02</span><h2>하는 일</h2></div>
+      <div class="cards">
+        <a class="card" href="#visit">
+          <div class="ph"><img src="images/corner.jpg" width="1100" height="619" alt="칸칸이 나뉜 0.1평 서가" loading="lazy"></div>
+          <div class="body">
+            <span class="kicker">SHELF · 0.1평 서점</span>
+            <h3>서가 한 칸의 서점</h3>
+            <p>정방형 서가 한 칸에 자기만의 서점을 엽니다. 새책, 헌책, 직접 만든 굿즈까지. 판매와 정산은 비북스가 함께합니다.</p>
+            <span class="go">입점 문의</span>
+          </div>
+        </a>
+        <a class="card" href="https://moim.bbooks.co.kr/" target="_blank" rel="noopener">
+          <div class="ph"><img src="images/table.jpg" width="1100" height="619" alt="책장으로 둘러싸인 긴 모임 테이블" loading="lazy"></div>
+          <div class="body">
+            <span class="kicker">GATHER · 비모임</span>
+            <h3>책으로 모이는 시간</h3>
+            <p>점주와 작가가 여는 독서·글쓰기·필사 모임, 작가와의 만남 b.talks, 밤새 읽는 밤밀온. 매달 새 일정이 올라옵니다.</p>
+            <span class="go">이번 달 모임</span>
+          </div>
+        </a>
+        <a class="card" href="https://moim.bbooks.co.kr/space/" target="_blank" rel="noopener">
+          <div class="ph"><img src="images/stairs.jpg" width="1100" height="619" alt="서가 아래 좌식 의자가 놓인 계단 좌석" loading="lazy"></div>
+          <div class="body">
+            <span class="kicker">SPACE · 대관</span>
+            <h3>책 사이에 머무는 자리</h3>
+            <p>세미나실, 매장 테이블, 계단 좌석, 1인실, 전체 대관. 모임과 북토크, 촬영, 혼자만의 작업에 빌려드립니다.</p>
+            <span class="go">공간 둘러보기</span>
+          </div>
+        </a>
+      </div>
+      <p class="also">계절마다 0.1평 서점들이 박스 하나씩 들고 나오는 북 &amp; 플리마켓 <b>b.box day</b>도 열립니다.</p>
+    </section>
+
+    <section id="name">
+      <div class="sec-head"><span class="no">03</span><h2>이름</h2></div>
+      <p>b.books의 b에는 세 가지 뜻을 겹쳐 두었습니다.</p>
+      <div class="names">
+        <div><b>Bucheon</b><span>책 읽는 도시 부천, 그중에서도 원미동에서 시작한 서점.</span></div>
+        <div><b>be-</b><span>완성이 아니라 되어가는 중. 자기 서점을 꿈꾸는 사람의 첫 칸.</span></div>
+        <div><b>bee</b><span>벌집처럼 촘촘한 서가의 칸들, 그 칸을 채우는 사람들의 연대.</span></div>
+      </div>
+    </section>
+
+    <section id="visit">
+      <div class="sec-head"><span class="no">04</span><h2>찾아오기</h2></div>
+      <div class="visit">
+        <div>
+          <dl>
+            <div><dt>ADDRESS</dt><dd>경기도 부천시 원미구 부천로136번길 24, 지하 B02호<br><span class="muted">원미구청 맞은편</span></dd></div>
+            <div><dt>HOURS</dt><dd>매일 10:00 — 18:00</dd></div>
+            <div><dt>WAY</dt><dd>춘의역 2번 출구, 부천역에서 걸어서<br><span class="muted">주말엔 원미구청 주차장 이용 가능</span></dd></div>
+            <div><dt>CONTACT</dt><dd><a href="tel:050713534850">0507-1353-4850</a><br><span class="muted">입점 · 대관 · 협업 문의</span></dd></div>
+            <div><dt>INSTAGRAM</dt><dd><a href="https://www.instagram.com/b_books2026/" target="_blank" rel="noopener">@b_books2026</a></dd></div>
+          </dl>
+          <a class="btn-line" href="https://naver.me/5Ollmubn" target="_blank" rel="noopener">네이버 지도에서 보기</a>
+        </div>
+        <figure class="print tape">
+          <img src="images/store.jpg" width="1100" height="619" alt="비북스 매장 입구 쪽에서 본 서가와 테이블" loading="lazy">
+          <figcaption>계단을 내려오면, 서가의 거리</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <footer>
+      <span class="label">© 2026 b.books 비북스</span>
+      <span class="label">PEOPLE · LOCAL · STORY</span>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  // 지금 보고 있는 섹션을 목차에 표시
+  (function () {
+    var links = [].slice.call(document.querySelectorAll('.index a'));
+    var secs = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+    var cur = -1, ticking = false;
+    function update() {
+      ticking = false;
+      var i = 0, line = innerHeight * 0.35;
+      secs.forEach(function (s, n) { if (s.getBoundingClientRect().top <= line) i = n; });
+      if (innerHeight + scrollY >= document.documentElement.scrollHeight - 4) i = secs.length - 1;
+      if (i === cur) return;
+      cur = i;
+      links.forEach(function (a, n) { a.classList.toggle('on', n === i); });
+      var nav = links[i].closest('.index');
+      if (nav.scrollWidth > nav.clientWidth) nav.scrollLeft = links[i].parentNode.offsetLeft - 16;
+    }
+    addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    addEventListener('resize', update);
+    update();
+  })();
+</script>
+</body>
+</html>
