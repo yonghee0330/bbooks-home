@@ -32,6 +32,7 @@
     --c-talks: #3e6b4f;
     --c-wonmi: #7d6230;
     --c-voice: #b8432a;
+    --c-moim2: #c9602a;
     --c-box: #c8961c;
     --c-space: #8b5e3c;
   }
@@ -136,7 +137,7 @@
   .m-box { --c: var(--c-box); grid-column: span 4; }
   .m-space  { --c: var(--c-space);  grid-column: span 4; }
   .m-voice .ph, .m-box .ph { aspect-ratio: 4 / 3; }
-  .m-voice .ph img, .m-box .ph img { object-position: center 28%; }
+  .m-voice .ph img, .m-box .ph img { object-position: center 40%; }
   .m-space .ph { aspect-ratio: 4 / 3; display: grid; grid-template-rows: 1fr 1fr; gap: 2px; }
   .m-space .ph img { min-height: 0; }
   .m-wonmi .stamp {
@@ -193,6 +194,28 @@
   .slide b { display: block; font-size: 15.5px; line-height: 1.45; margin-top: 3px; }
   .slide span { display: block; font-size: 13px; color: var(--muted); margin-top: 2px; }
   .slide.next { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border-style: dashed; min-height: 300px; background: transparent; color: var(--muted); font-size: 14px; padding: 20px; }
+
+  .slide { cursor: pointer; text-align: left; font: inherit; color: inherit; padding: 0; }
+  .slide .ph { position: relative; }
+  .slide .cnt { position: absolute; right: 8px; bottom: 8px; font-family: var(--mono); font-size: 11px; background: rgba(43,33,27,.78); color: #fff8ec; padding: 2px 7px; }
+  .slide:hover img { filter: brightness(1.05); }
+  .slide:focus-visible { outline: 2px solid var(--c); outline-offset: 2px; }
+  /* lightbox */
+  .lb { position: fixed; inset: 0; z-index: 100; background: rgba(28,22,18,.94); color: #f3ede2; display: flex; flex-direction: column; }
+  .lb[hidden] { display: none; }
+  .lb-top { display: flex; align-items: center; gap: 14px; padding: 14px 18px; }
+  .lb-top > div { flex: 1; min-width: 0; }
+  .lb-no { font-family: var(--mono); font-size: 12px; color: #e9c46a; margin-right: 10px; }
+  .lb-title { font-size: 16px; }
+  .lb-count { font-family: var(--mono); font-size: 12px; color: #b9b2a6; }
+  .lb-x { width: 40px; height: 40px; border: 1px solid #6d625a; background: transparent; color: inherit; font-size: 22px; cursor: pointer; }
+  .lb-track { flex: 1; display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .lb-track::-webkit-scrollbar { display: none; }
+  .lb-track figure { flex: none; width: 100%; height: 100%; scroll-snap-align: center; display: flex; align-items: center; justify-content: center; padding: 0 16px 24px; }
+  .lb-track img { max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: 0 20px 40px rgba(0,0,0,.4); }
+  .lb-arrow { position: absolute; top: 50%; width: 46px; height: 46px; margin-top: -23px; border: 1px solid #6d625a; background: rgba(28,22,18,.6); color: inherit; font-family: var(--mono); font-size: 18px; cursor: pointer; }
+  .lb-arrow.prev { left: 14px; } .lb-arrow.next { right: 14px; }
+  @media (max-width: 680px) { .lb-arrow { display: none; } }
 
   /* ── future ── */
   .future { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -315,22 +338,22 @@
 
       <div class="bento">
         <a class="mod m-moim" href="https://moim.bbooks.co.kr/" target="_blank" rel="noopener">
-          <div class="ph"><img src="images/table.jpg" width="1100" height="619" alt="서가로 둘러싸인 긴 모임 테이블" loading="lazy"></div>
+          <div class="ph"><img src="images/m-moim.jpg" width="1000" height="625" alt="긴 테이블에 둘러앉아 비모임을 하는 사람들" loading="lazy"></div>
           <div class="body">
             <div class="meta"><span class="en">b.moim</span><span class="when">매달 새 일정</span></div>
             <h3>비모임</h3>
-            <p>점주와 이웃이 직접 여는 작은 모임. 독서, 글쓰기, 필사, 음악, 차까지 매달 한 서가씩 새로 채웁니다.</p>
+            <p>0.1평 점주들이 직접 모임장이 되어 여는 작은 문화클래스. 독서, 드로잉, 인형 만들기, 티 블렌딩, 편지까지.</p>
             <div class="chips"><span>OFF-BOOK</span><span>목요 북클럽</span><span>클래식 감상</span><span>『토지』 완독</span><span>한 사람을 위한 편지</span></div>
             <div class="foot"><span class="ties"><i></i><i></i><i class="on"></i><i class="on"></i><em>로컬 · 동네책방</em></span><span class="go">이번 달 모임</span></div>
           </div>
         </a>
 
         <a class="mod m-bam" href="https://bam.bbooks.co.kr/" target="_blank" rel="noopener">
-          <div class="ph"><img src="images/bammilon.jpg" width="1024" height="768" alt="불 꺼진 서점, 스탠드 아래 모여 책을 읽는 사람들" loading="lazy"></div>
+          <div class="ph"><img src="images/m-bam.jpg" width="800" height="1000" alt="밤의 서점, 스탠드 아래 테이블에서 책을 읽는 사람들" loading="lazy"></div>
           <div class="body">
             <div class="meta"><span class="en">b.am 密 on</span><span class="when">23:00 → 06:00</span></div>
             <h3>밤밀온</h3>
-            <p>잠들지 않는 서점. 밤 11시에 들어와 새벽 6시까지, 테마가 있는 밤을 책과 함께 보냅니다.</p>
+            <p>잠들지 않는 서점. 밤 11시에 들어와 아침 6시까지, 침낭을 펴고 테마가 있는 밤을 책과 함께 보냅니다.</p>
             <div class="foot"><span class="ties"><i></i><i></i><i></i><i class="on"></i><em>동네책방</em></span><span class="go">다음 밤</span></div>
           </div>
         </a>
@@ -348,7 +371,7 @@
         <a class="mod m-wonmi" href="https://www.youtube.com/watch?v=gM2q676UGJc&amp;t=74s" target="_blank" rel="noopener">
           <div class="ph">
             <span class="stamp">2026 책읽는 대한민국<br>북클럽 리그</span>
-            <img src="images/wonmi-club.jpg" width="1024" height="682" alt="스탠드 불빛 아래 놓인 책 『원미동 사람들』" loading="lazy">
+            <img src="images/m-wonmi.jpg" width="1100" height="618" alt="서가 앞에서 『원미동 사람들』을 함께 읽는 원미동북클럽" loading="lazy">
           </div>
           <div class="body">
             <div class="meta"><span class="en">Wonmi-dong Book Club</span><span class="when">매주 월–목 13:30</span></div>
@@ -359,21 +382,21 @@
         </a>
 
         <a class="mod m-voice" href="https://moim.bbooks.co.kr/" target="_blank" rel="noopener">
-          <div class="ph"><img src="images/p/bvoice-1.jpg" width="700" height="875" alt="b.voice 포스터" loading="lazy"></div>
+          <div class="ph"><img src="images/m-voice.jpg" width="800" height="600" alt="비보이스 EP.03을 마치고 책을 들고 선 사람들" loading="lazy"></div>
           <div class="body">
             <div class="meta"><span class="en">b.voice</span><span class="when">회차제</span></div>
             <h3>비보이스</h3>
-            <p>점주와 창작자가 직접 꺼내는 이야기. 미니 강연, 상영, 듀엣 토크.</p>
+            <p>한 권의 책, 한 사람의 목소리. 0.1평 점주이자 작가, 감독이 직접 꺼내는 이야기.</p>
             <div class="foot"><span class="ties"><i></i><i></i><i class="on"></i><i class="on"></i></span><span class="go">비모임에서 신청</span></div>
           </div>
         </a>
 
         <a class="mod m-box" href="https://box.bbooks.co.kr/" target="_blank" rel="noopener">
-          <div class="ph"><img src="images/p/market.jpg" width="700" height="933" alt="b.box 마켓 포스터" loading="lazy"></div>
+          <div class="ph"><img src="images/m-box.jpg" width="800" height="600" alt="첫 번째 b.box day, 서가 사이를 가득 메운 사람들" loading="lazy"></div>
           <div class="body">
-            <div class="meta"><span class="en">b.box</span><span class="when">계절마다</span></div>
+            <div class="meta"><span class="en">b.box</span><span class="when">계절마다 · 다음은 연말</span></div>
             <h3>비박스</h3>
-            <p>0.1평 서점들이 박스 하나씩 들고 나오는 북 &amp; 플리마켓. 공연과 체험도 함께.</p>
+            <p>0.1평 서점들이 박스 하나씩 들고 매장 곳곳으로 걸어 나오는 북 &amp; 플리마켓. 공연과 체험도 함께.</p>
             <div class="foot"><span class="ties"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="go">비박스 소식</span></div>
           </div>
         </a>
@@ -395,7 +418,7 @@
       <div class="cells-band">
         <div>
           <h3><b>104</b>칸의 0.1평 서점</h3>
-          <p>이 모든 프로그램은 서가 한 칸씩을 나눠 가진 점주들에게서 시작됩니다.</p>
+          <p>2026년 3월 모집을 시작해 6월 20일, 104칸 모두 주인을 찾았습니다. 이 모든 프로그램은 서가 한 칸씩을 나눠 가진 점주들에게서 시작됩니다.</p>
         </div>
         <div class="cells" id="cells" aria-hidden="true"></div>
       </div>
@@ -428,7 +451,7 @@
   <section class="sec" id="stage">
     <div class="wrap">
       <div class="sec-head">
-        <h2><small>STAGE · 지나온 무대</small>비톡스와 비보이스,<br>회차마다 한 장씩</h2>
+        <h2><small>STAGE · 지나온 무대</small>회차마다 한 장씩,<br>누르면 그날의 사진</h2>
         <p>신청은 모두 <a class="ul" href="https://moim.bbooks.co.kr/" target="_blank" rel="noopener">비모임</a>에서</p>
       </div>
       <div class="reel" data-reel="talks" style="--c: var(--c-talks)">
@@ -436,11 +459,29 @@
         <div class="track"></div>
       </div>
       <div class="reel" data-reel="voice" style="--c: var(--c-voice)">
-        <div class="reel-head"><span class="en">b.voice</span><h3>비보이스 · 점주와 창작자의 목소리</h3><span class="nav"><button type="button" data-dir="-1" aria-label="이전">←</button><button type="button" data-dir="1" aria-label="다음">→</button></span></div>
+        <div class="reel-head"><span class="en">b.voice</span><h3>비보이스 · 한 권의 책, 한 사람의 목소리</h3><span class="nav"><button type="button" data-dir="-1" aria-label="이전">←</button><button type="button" data-dir="1" aria-label="다음">→</button></span></div>
+        <div class="track"></div>
+      </div>
+      <div class="reel" data-reel="bam" style="--c: var(--c-bam)">
+        <div class="reel-head"><span class="en">b.am 密 on</span><h3>밤밀온 · 지나간 밤</h3><span class="nav"><button type="button" data-dir="-1" aria-label="이전">←</button><button type="button" data-dir="1" aria-label="다음">→</button></span></div>
+        <div class="track"></div>
+      </div>
+      <div class="reel" data-reel="box" style="--c: var(--c-box)">
+        <div class="reel-head"><span class="en">b.box</span><h3>비박스 · 박스 하나 들고</h3><span class="nav"><button type="button" data-dir="-1" aria-label="이전">←</button><button type="button" data-dir="1" aria-label="다음">→</button></span></div>
+        <div class="track"></div>
+      </div>
+      <div class="reel" data-reel="moim" style="--c: var(--c-moim)">
+        <div class="reel-head"><span class="en">b.moim</span><h3>비모임 · 원미동북클럽</h3><span class="nav"><button type="button" data-dir="-1" aria-label="이전">←</button><button type="button" data-dir="1" aria-label="다음">→</button></span></div>
         <div class="track"></div>
       </div>
     </div>
   </section>
+
+  <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="사진 보기" hidden>
+    <div class="lb-top"><div><span class="lb-no"></span><b class="lb-title"></b></div><span class="lb-count"></span><button type="button" class="lb-x" aria-label="닫기">×</button></div>
+    <div class="lb-track"></div>
+    <button type="button" class="lb-arrow prev" aria-label="이전 사진">←</button><button type="button" class="lb-arrow next" aria-label="다음 사진">→</button>
+  </div>
 
   <section class="sec">
     <div class="wrap">
@@ -509,33 +550,77 @@
     el.innerHTML = html;
   })();
 
-  // 지나온 무대 — 회차를 추가하려면 아래 배열에 한 줄씩 넣으면 됩니다
+  // 지나온 무대 — 회차 추가: 사진을 images/g/<키>/ 에 넣고 GALLERY와 REELS에 한 줄씩
+  var GALLERY = {"talks-04": ["images/g/talks-04/00.jpg", "images/g/talks-04/01.jpg", "images/g/talks-04/02.jpg", "images/g/talks-04/03.jpg", "images/g/talks-04/04.jpg", "images/g/talks-04/05.jpg", "images/g/talks-04/06.jpg", "images/g/talks-04/07.jpg"], "talks-05": ["images/g/talks-05/00.jpg", "images/g/talks-05/01.jpg", "images/g/talks-05/02.jpg", "images/g/talks-05/03.jpg", "images/g/talks-05/04.jpg", "images/g/talks-05/05.jpg", "images/g/talks-05/06.jpg", "images/g/talks-05/07.jpg"], "talks-07": ["images/g/talks-07/00.jpg", "images/g/talks-07/01.jpg", "images/g/talks-07/02.jpg", "images/g/talks-07/03.jpg", "images/g/talks-07/04.jpg", "images/g/talks-07/05.jpg", "images/g/talks-07/06.jpg", "images/g/talks-07/07.jpg", "images/g/talks-07/08.jpg"], "talks-08": ["images/g/talks-08/00.jpg", "images/g/talks-08/01.jpg", "images/g/talks-08/02.jpg", "images/g/talks-08/03.jpg", "images/g/talks-08/04.jpg", "images/g/talks-08/05.jpg", "images/g/talks-08/06.jpg", "images/g/talks-08/07.jpg", "images/g/talks-08/08.jpg"], "talks-09": ["images/g/talks-09/00.jpg", "images/g/talks-09/01.jpg", "images/g/talks-09/02.jpg", "images/g/talks-09/03.jpg", "images/g/talks-09/04.jpg", "images/g/talks-09/05.jpg", "images/g/talks-09/06.jpg", "images/g/talks-09/07.jpg"], "voice-01": ["images/g/voice-01/00.jpg", "images/g/voice-01/01.jpg", "images/g/voice-01/02.jpg", "images/g/voice-01/03.jpg", "images/g/voice-01/04.jpg", "images/g/voice-01/05.jpg", "images/g/voice-01/06.jpg", "images/g/voice-01/07.jpg", "images/g/voice-01/08.jpg", "images/g/voice-01/09.jpg"], "voice-02": ["images/g/voice-02/00.jpg", "images/g/voice-02/01.jpg", "images/g/voice-02/02.jpg", "images/g/voice-02/03.jpg", "images/g/voice-02/04.jpg", "images/g/voice-02/05.jpg", "images/g/voice-02/06.jpg", "images/g/voice-02/07.jpg", "images/g/voice-02/08.jpg", "images/g/voice-02/09.jpg", "images/g/voice-02/10.jpg", "images/g/voice-02/11.jpg", "images/g/voice-02/12.jpg", "images/g/voice-02/13.jpg", "images/g/voice-02/14.jpg"], "voice-03": ["images/g/voice-03/00.jpg", "images/g/voice-03/01.jpg", "images/g/voice-03/02.jpg", "images/g/voice-03/03.jpg", "images/g/voice-03/04.jpg", "images/g/voice-03/05.jpg", "images/g/voice-03/06.jpg", "images/g/voice-03/07.jpg"], "voice-04": ["images/g/voice-04/00.jpg", "images/g/voice-04/01.jpg", "images/g/voice-04/02.jpg", "images/g/voice-04/03.jpg", "images/g/voice-04/04.jpg", "images/g/voice-04/05.jpg", "images/g/voice-04/06.jpg", "images/g/voice-04/07.jpg"], "voice-05": ["images/g/voice-05/00.jpg"], "voice-06": ["images/g/voice-06/00.jpg"], "bam-01": ["images/g/bam-01/00.jpg", "images/g/bam-01/01.jpg", "images/g/bam-01/02.jpg", "images/g/bam-01/03.jpg", "images/g/bam-01/04.jpg", "images/g/bam-01/05.jpg", "images/g/bam-01/06.jpg", "images/g/bam-01/07.jpg", "images/g/bam-01/08.jpg", "images/g/bam-01/09.jpg", "images/g/bam-01/10.jpg", "images/g/bam-01/11.jpg", "images/g/bam-01/12.jpg", "images/g/bam-01/13.jpg", "images/g/bam-01/14.jpg", "images/g/bam-01/15.jpg", "images/g/bam-01/16.jpg", "images/g/bam-01/17.jpg", "images/g/bam-01/18.jpg"], "bam-02": ["images/g/bam-02/00.jpg", "images/g/bam-02/01.jpg", "images/g/bam-02/02.jpg", "images/g/bam-02/03.jpg", "images/g/bam-02/04.jpg", "images/g/bam-02/05.jpg", "images/g/bam-02/06.jpg", "images/g/bam-02/07.jpg", "images/g/bam-02/08.jpg", "images/g/bam-02/09.jpg", "images/g/bam-02/10.jpg"], "bam-03": ["images/g/bam-03/00.jpg", "images/g/bam-03/01.jpg", "images/g/bam-03/02.jpg", "images/g/bam-03/03.jpg", "images/g/bam-03/04.jpg", "images/g/bam-03/05.jpg", "images/g/bam-03/06.jpg", "images/g/bam-03/07.jpg", "images/g/bam-03/08.jpg", "images/g/bam-03/09.jpg", "images/g/bam-03/10.jpg"], "box-01": ["images/g/box-01/00.jpg", "images/g/box-01/01.jpg", "images/g/box-01/02.jpg", "images/g/box-01/03.jpg", "images/g/box-01/04.jpg", "images/g/box-01/05.jpg", "images/g/box-01/06.jpg", "images/g/box-01/07.jpg", "images/g/box-01/08.jpg", "images/g/box-01/09.jpg"], "box-flea": ["images/g/box-flea/00.jpg", "images/g/box-flea/01.jpg", "images/g/box-flea/02.jpg", "images/g/box-flea/03.jpg", "images/g/box-flea/04.jpg", "images/g/box-flea/05.jpg", "images/g/box-flea/06.jpg", "images/g/box-flea/07.jpg", "images/g/box-flea/08.jpg", "images/g/box-flea/09.jpg", "images/g/box-flea/10.jpg", "images/g/box-flea/11.jpg", "images/g/box-flea/12.jpg", "images/g/box-flea/13.jpg", "images/g/box-flea/14.jpg", "images/g/box-flea/15.jpg", "images/g/box-flea/16.jpg", "images/g/box-flea/17.jpg"], "box-02": ["images/g/box-02/00.jpg", "images/g/box-02/01.jpg", "images/g/box-02/02.jpg", "images/g/box-02/03.jpg", "images/g/box-02/04.jpg", "images/g/box-02/05.jpg", "images/g/box-02/06.jpg", "images/g/box-02/07.jpg", "images/g/box-02/08.jpg", "images/g/box-02/09.jpg", "images/g/box-02/10.jpg", "images/g/box-02/11.jpg", "images/g/box-02/12.jpg", "images/g/box-02/13.jpg", "images/g/box-02/14.jpg", "images/g/box-02/15.jpg", "images/g/box-02/16.jpg", "images/g/box-02/17.jpg", "images/g/box-02/18.jpg"], "moim-05": ["images/g/moim-05/00.jpg", "images/g/moim-05/01.jpg", "images/g/moim-05/02.jpg", "images/g/moim-05/03.jpg", "images/g/moim-05/04.jpg", "images/g/moim-05/05.jpg", "images/g/moim-05/06.jpg", "images/g/moim-05/07.jpg", "images/g/moim-05/08.jpg", "images/g/moim-05/09.jpg", "images/g/moim-05/10.jpg"], "moim-06": ["images/g/moim-06/00.jpg", "images/g/moim-06/01.jpg", "images/g/moim-06/02.jpg", "images/g/moim-06/03.jpg", "images/g/moim-06/04.jpg", "images/g/moim-06/05.jpg", "images/g/moim-06/06.jpg", "images/g/moim-06/07.jpg", "images/g/moim-06/08.jpg", "images/g/moim-06/09.jpg", "images/g/moim-06/10.jpg", "images/g/moim-06/11.jpg", "images/g/moim-06/12.jpg"], "moim-07": ["images/g/moim-07/00.jpg", "images/g/moim-07/01.jpg", "images/g/moim-07/02.jpg", "images/g/moim-07/03.jpg", "images/g/moim-07/04.jpg", "images/g/moim-07/05.jpg", "images/g/moim-07/06.jpg", "images/g/moim-07/07.jpg", "images/g/moim-07/08.jpg", "images/g/moim-07/09.jpg", "images/g/moim-07/10.jpg", "images/g/moim-07/11.jpg", "images/g/moim-07/12.jpg", "images/g/moim-07/13.jpg"], "moim-08": ["images/g/moim-08/00.jpg", "images/g/moim-08/01.jpg", "images/g/moim-08/02.jpg", "images/g/moim-08/03.jpg", "images/g/moim-08/04.jpg", "images/g/moim-08/05.jpg", "images/g/moim-08/06.jpg"], "wonmi": ["images/g/wonmi/00.jpg", "images/g/wonmi/01.jpg", "images/g/wonmi/02.jpg", "images/g/wonmi/03.jpg", "images/g/wonmi/04.jpg", "images/g/wonmi/05.jpg", "images/g/wonmi/06.jpg", "images/g/wonmi/07.jpg", "images/g/wonmi/08.jpg", "images/g/wonmi/09.jpg", "images/g/wonmi/10.jpg", "images/g/wonmi/11.jpg", "images/g/wonmi/12.jpg", "images/g/wonmi/13.jpg"]};
   var REELS = {
     talks: [
-      { no: '2026.05', title: '박동수 『철학책 독서 모임』 『동료에게 말 걸기』', sub: '사월의책 편집장', img: 'images/talks/2026-05.jpg' },
-      { no: '2026.07', title: '권혁란 『이름의 빈자리에』', sub: '한겨레출판 · 예스24', img: 'images/talks/2026-07.jpg' },
-      { no: '2026.08', title: '이수영 『선을 넘는 북클럽』', sub: '메멘토 · 예스24', img: 'images/talks/2026-08.jpg' },
-      { no: '2026.09', title: '김은영 『마음 놓고 쉬고 싶은 당신을 위한 필사 노트』', sub: '심심 · 예스24', img: 'images/talks/2026-09.jpg' }
+      { g: 'talks-04', no: '2026.04', title: '은유 『해방의 밤』', sub: '오픈 기념 북토크' },
+      { g: 'talks-05', no: '2026.05', title: '박동수 『철학책 독서 모임』', sub: '낯선 사람과 낯선 책이 모일 때' },
+      { g: 'talks-07', no: '2026.07', title: '권혁란 『이름의 빈자리에』', sub: '비북스 × 한겨레출판 × 예스24' },
+      { g: 'talks-08', no: '2026.08', title: '이수영 『선을 넘는 북클럽』', sub: '비북스 × 메멘토 × 예스24' },
+      { g: 'talks-09', no: '2026.09', title: '김은영 『마음 놓고 쉬고 싶은 당신을 위한 필사 노트』', sub: '비북스 × 심심 × 예스24' }
     ],
     voice: [
-      { no: 'EP.01', title: '어쩌다 보니, 독립출판', sub: '느린호수 & 앗트 듀엣 북토크 · 6월', img: 'images/voice/ep01.jpg' },
-      { no: 'EP.02', title: 'DRIVE', sub: '독립영화 상영과 제작 이야기 · 7월', img: 'images/voice/ep02.jpg' },
-      { no: 'EP.03', title: '소중한 ___에게', sub: '7월', img: 'images/voice/ep03.jpg' },
-      { no: 'EP.04', title: '아들러 심리학이 선물한 8가지 행복', sub: '8월', img: 'images/voice/ep04.jpg' },
-      { no: 'EP.05', title: '언니와 칸타빌레', sub: '8월', img: 'images/voice/ep05.jpg' },
-      { no: 'EP.06', title: '투덜투덜 욕TALK', sub: '공월 · 김권하 · 8월', img: 'images/voice/ep06.jpg' }
+      { g: 'voice-01', no: 'EP.01', title: '어쩌다 보니, 독립출판', sub: '느린호수 & 앗트 · 6월' },
+      { g: 'voice-02', no: 'EP.02', title: '독립영화 〈드라이브〉 상영과 대화', sub: '정연 감독 · 7월' },
+      { g: 'voice-03', no: 'EP.03', title: '소중한 나에게', sub: 'B-41 이유진서가 · 7월' },
+      { g: 'voice-04', no: 'EP.04', title: '아들러 심리학이 선물한 8가지 행복', sub: 'B-56 아심적중 · 8월' },
+      { g: 'voice-05', no: 'EP.05', title: '언니와 칸타빌레', sub: '나의 소리를 찾아서 · 8월' },
+      { g: 'voice-06', no: 'EP.06', title: '개킹받는 당신을 위한 투덜투덜 욕TALK', sub: '8월' }
+    ],
+    bam: [
+      { g: 'bam-01', no: 'EP.01', title: '밤이 밀려온 서점은, 잠들지 않았다', sub: '5월 · 첫 번째 밤' },
+      { g: 'bam-02', no: 'EP.02', title: '추·미·스의 밤', sub: '6월 · 추리 미스터리 스릴러' },
+      { g: 'bam-03', no: 'EP.03', title: '한여름 밤의 책방', sub: '7월 · A Midsummer Night’s Bookstore' }
+    ],
+    box: [
+      { g: 'box-01', no: '1st', title: '첫 번째 b.box day', sub: '2026.5.30 · 0.1평 마켓 & 교류회' },
+      { g: 'box-flea', no: 'OUT', title: 'b.flea Market', sub: '2026.7.4 · 부천문화재단 어린이축제' },
+      { g: 'box-02', no: '2nd', title: '두 번째 b.box day', sub: '2026.9.5 · 셀러 18팀' }
+    ],
+    moim: [
+      { g: 'wonmi', no: 'NOW', title: '원미동북클럽', sub: '매주 월–목 13:30 · 『원미동 사람들』' },
+      { g: 'moim-05', no: '2026.05', title: '비모임 시작', sub: '숙숙 드로잉 · 영화 한 편, 이야기 한 잔' },
+      { g: 'moim-06', no: '2026.06', title: '책 속 캐릭터 인형 만들기', sub: '드로잉 숙숙 · 키링' },
+      { g: 'moim-07', no: '2026.07', title: '커스텀 티 · 미니북 · 영화', sub: '7월의 비모임' },
+      { g: 'moim-08', no: '2026.08', title: '필사 · 다꾸 · 여행 기록', sub: '8월의 비모임' }
     ]
   };
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   document.querySelectorAll('.reel').forEach(function (reel) {
     var items = REELS[reel.dataset.reel] || [], track = reel.querySelector('.track');
     track.innerHTML = items.slice().reverse().map(function (s) {
-      return '<figure class="slide"><img src="' + esc(s.img) + '" alt="' + esc(s.title) + ' 포스터" loading="lazy"><figcaption class="cap"><span class="no">' + esc(s.no) + '</span><b>' + esc(s.title) + '</b><span>' + esc(s.sub) + '</span></figcaption></figure>';
-    }).join('') + '<div class="slide next">다음 회차는<br>비모임에서 먼저 열려요</div>';
+      var imgs = GALLERY[s.g] || [];
+      return '<button type="button" class="slide" data-g="' + esc(s.g) + '" data-no="' + esc(s.no) + '" data-title="' + esc(s.title) + '"><span class="ph"><img src="' + esc(imgs[0]) + '" alt="' + esc(s.title) + '" loading="lazy">' + (imgs.length > 1 ? '<span class="cnt">사진 ' + imgs.length + '</span>' : '') + '</span><span class="cap"><span class="no">' + esc(s.no) + '</span><b>' + esc(s.title) + '</b><span>' + esc(s.sub) + '</span></span></button>';
+    }).join('');
     reel.querySelectorAll('.nav button').forEach(function (b) {
       b.addEventListener('click', function () { track.scrollBy({ left: +b.dataset.dir * (track.clientWidth * .8), behavior: 'smooth' }); });
     });
   });
+
+  // 사진 보기 (라이트박스)
+  (function () {
+    var lb = document.getElementById('lb'), tr = lb.querySelector('.lb-track'), cnt = lb.querySelector('.lb-count'), last;
+    function count() { var n = tr.children.length, i = Math.round(tr.scrollLeft / tr.clientWidth); cnt.textContent = (i + 1) + ' / ' + n; }
+    function open(btn) {
+      var imgs = GALLERY[btn.dataset.g] || []; last = btn;
+      lb.querySelector('.lb-no').textContent = btn.dataset.no;
+      lb.querySelector('.lb-title').textContent = btn.dataset.title;
+      tr.innerHTML = imgs.map(function (src, i) { return '<figure><img src="' + esc(src) + '" alt="' + esc(btn.dataset.title) + ' 사진 ' + (i + 1) + '"' + (i > 1 ? ' loading="lazy"' : '') + '></figure>'; }).join('');
+      lb.hidden = false; document.body.style.overflow = 'hidden'; tr.scrollLeft = 0; count(); lb.querySelector('.lb-x').focus();
+    }
+    function close() { lb.hidden = true; document.body.style.overflow = ''; tr.innerHTML = ''; if (last) last.focus(); }
+    function go(d) { tr.scrollBy({ left: d * tr.clientWidth, behavior: 'smooth' }); }
+    document.addEventListener('click', function (e) { var b = e.target.closest('.slide'); if (b) open(b); });
+    lb.querySelector('.lb-x').addEventListener('click', close);
+    lb.querySelector('.prev').addEventListener('click', function () { go(-1); });
+    lb.querySelector('.next').addEventListener('click', function () { go(1); });
+    tr.addEventListener('scroll', function () { requestAnimationFrame(count); }, { passive: true });
+    document.addEventListener('keydown', function (e) {
+      if (lb.hidden) return;
+      if (e.key === 'Escape') close(); else if (e.key === 'ArrowRight') go(1); else if (e.key === 'ArrowLeft') go(-1);
+    });
+  })();
 
   // 유튜브: 누르기 전엔 썸네일만, 누르면 그 자리에서 재생
   document.querySelectorAll('.yt').forEach(function (btn) {
