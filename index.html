@@ -82,7 +82,7 @@
   .stop { position: relative; padding-top: 30px; padding-right: 12px; }
   .stop::before { content: ""; position: absolute; left: 0; top: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--paper); border: 2px solid var(--ink); z-index: 1; }
   .stop:last-child::before { background: var(--stamp); border-color: var(--stamp); }
-  .stop b { display: block; font-size: 22px; letter-spacing: -.02em; }
+  .stop b { display: block; font-size: 21px; letter-spacing: -.02em; }
   .stop span { display: block; font-size: 13.5px; color: var(--muted); line-height: 1.55; margin-top: 2px; }
   .stop .en { font-family: var(--mono); font-size: 11px; letter-spacing: .14em; color: var(--muted); }
 
@@ -217,18 +217,113 @@
   .lb-arrow.prev { left: 14px; } .lb-arrow.next { right: 14px; }
   @media (max-width: 680px) { .lb-arrow { display: none; } }
 
-  /* ── future ── */
-  .future { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-  .dream {
-    border: 1.5px dashed var(--ink-2); padding: 20px 18px 22px; position: relative; min-height: 230px;
-    background-color: rgba(251,248,242,.6);
+  /* ── future band (cork board) ── */
+  .future-band {
+    margin-top: 84px; padding: 72px 0 84px; color: #f6efe3; position: relative; overflow: hidden;
+    background-color: #6b4f36;
+    background-image:
+      radial-gradient(rgba(0,0,0,.18) 1px, transparent 1.6px),
+      radial-gradient(rgba(255,240,210,.10) 1px, transparent 1.4px),
+      linear-gradient(160deg, #7a5a3c, #5c4330);
+    background-size: 7px 7px, 11px 11px, 100% 100%;
+    background-position: 0 0, 3px 5px, 0 0;
+    box-shadow: inset 0 18px 30px -18px rgba(0,0,0,.5), inset 0 -18px 30px -18px rgba(0,0,0,.5);
   }
+  .sec-head.light { border-bottom-color: #f6efe3; }
+  .sec-head.light h2 small { color: #f2c46d; }
+  .sec-head.light p { color: #e6d9c6; }
+  .roadmap { position: relative; margin-top: 10px; }
+  .road { position: absolute; left: 0; right: 0; top: 34px; width: 100%; height: 120px; overflow: visible; }
+  .road path { fill: none; stroke: #f2c46d; stroke-width: 2.5; stroke-dasharray: 6 8; stroke-dashoffset: 0; opacity: .85; }
+  .road path { clip-path: inset(0 100% 0 0); transition: clip-path 1.8s cubic-bezier(.6,.1,.2,1); }
+  .roadmap.in .road path { clip-path: inset(0 0 0 0); }
+  .dreams { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; padding-top: 18px; }
+  .dream {
+    background: #fbf6ea; color: var(--ink); padding: 26px 18px 22px; position: relative; min-height: 220px;
+    box-shadow: 0 2px 2px rgba(0,0,0,.15), 0 18px 28px -16px rgba(0,0,0,.55);
+    background-image: linear-gradient(transparent 27px, rgba(184,67,42,.25) 27px, rgba(184,67,42,.25) 28px, transparent 28px);
+    opacity: 0; transform: translateY(-40px) rotate(calc(var(--d) * 2deg - 3deg)) scale(.96);
+    transition: opacity .6s ease, transform .8s cubic-bezier(.2,1.4,.4,1);
+    transition-delay: calc(var(--d) * .18s + .3s);
+  }
+  .roadmap.in .dream { opacity: 1; transform: translateY(0) rotate(calc((var(--d) - 1.5) * 1.4deg)); }
+  .dream:hover { transform: translateY(-6px) rotate(0deg) !important; transition-delay: 0s; }
+  .dream .pin { position: absolute; top: -9px; left: 50%; width: 18px; height: 18px; margin-left: -9px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #ff8a6b, #b8432a 60%, #7a2414); box-shadow: 0 3px 4px rgba(0,0,0,.4); }
   .dream .n { font-family: var(--display); font-size: 40px; font-weight: 800; line-height: 1; color: var(--stamp); }
-  .dream .st { position: absolute; right: 14px; top: 18px; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; color: var(--muted); border: 1px solid var(--line); padding: 2px 7px; background: var(--paper); }
+  .dream .st { position: absolute; right: 14px; top: 22px; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; color: var(--muted); border: 1px solid var(--line); padding: 2px 7px; }
   .dream h3 { font-size: 19px; letter-spacing: -.02em; margin: 14px 0 8px; line-height: 1.35; }
   .dream p { font-size: 14px; color: var(--ink-2); line-height: 1.75; }
-  .future-line { margin-top: 26px; font-size: clamp(20px, 2.4vw, 28px); letter-spacing: -.02em; line-height: 1.5; }
-  .future-line em { font-style: normal; background: linear-gradient(transparent 62%, #e9d6b7 62%); }
+
+  .board { margin-top: 64px; }
+  .board-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+  .board-head h3 { font-size: clamp(22px, 2.6vw, 30px); letter-spacing: -.02em; }
+  .board-count { font-family: var(--mono); font-size: 13px; color: #e6d9c6; }
+  .board-count b { font-family: var(--display); font-size: 26px; color: #f2c46d; margin-right: 2px; }
+  .board-grid { display: grid; grid-template-columns: 300px 1fr; gap: 28px; align-items: start; }
+  .pad { position: sticky; top: 78px; }
+  .pad-note {
+    --pc: #fbe38b; display: block; position: relative; background: var(--pc); padding: 18px 16px 30px; transform: rotate(-1.2deg);
+    box-shadow: 0 2px 2px rgba(0,0,0,.15), 0 20px 28px -14px rgba(0,0,0,.6); transition: background .25s;
+  }
+  .pad-note::before { content: ""; position: absolute; top: -10px; left: 50%; width: 90px; height: 22px; transform: translateX(-50%) rotate(2deg); background: rgba(255,255,255,.45); }
+  .pad-note textarea { width: 100%; border: 0; background: transparent; resize: none; font-family: 'Gowun Batang', serif; font-size: 18px; line-height: 1.6; color: #2b211b; outline: none; }
+  .pad-note textarea::placeholder { color: rgba(43,33,27,.45); }
+  .pad-len { position: absolute; right: 12px; bottom: 8px; font-family: var(--mono); font-size: 11px; color: rgba(43,33,27,.55); }
+  .pad-row { display: flex; gap: 10px; align-items: center; margin-top: 16px; }
+  .pad-row input { flex: 1; min-width: 0; padding: 9px 10px; border: 1px solid rgba(246,239,227,.5); background: rgba(0,0,0,.18); color: #f6efe3; font: 14px var(--serif); }
+  .pad-row input::placeholder { color: #cdbfac; }
+  .swatches { display: flex; gap: 6px; }
+  .sw { width: 24px; height: 24px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; }
+  .sw[data-c=y] { background: #fbe38b; } .sw[data-c=p] { background: #f8b9c4; } .sw[data-c=g] { background: #c9e6a6; } .sw[data-c=b] { background: #b7dcef; }
+  .sw.on { border-color: #fff; box-shadow: 0 0 0 2px #2b211b; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .stick-btn { margin-top: 14px; width: 100%; padding: 12px; border: 0; background: #f2c46d; color: #2b211b; font: 700 15px var(--serif); cursor: pointer; transition: transform .15s, background .2s; }
+  .stick-btn:hover { background: #ffd47f; transform: translateY(-1px); }
+  .stick-btn:disabled { opacity: .6; cursor: default; }
+  .pad-msg { min-height: 1.4em; margin-top: 8px; font-size: 13px; color: #f2c46d; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+  .wall-notes { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 18px 16px; align-content: start; min-height: 260px; }
+  .note {
+    --pc: #fbe38b; position: relative; background: var(--pc); color: #2b211b; padding: 16px 13px 12px; min-height: 130px;
+    display: flex; flex-direction: column; justify-content: space-between; gap: 10px;
+    transform: rotate(var(--r, 0deg)); box-shadow: 0 1px 1px rgba(0,0,0,.12), 0 12px 18px -10px rgba(0,0,0,.55);
+    transition: transform .25s ease;
+  }
+  .note::before { content: ""; position: absolute; top: -8px; left: 50%; width: 54px; height: 18px; transform: translateX(-50%) rotate(-3deg); background: rgba(255,255,255,.42); }
+  .note:hover { transform: rotate(0deg) translateY(-4px) scale(1.03); z-index: 2; }
+  .note p { font-size: 15.5px; line-height: 1.55; word-break: keep-all; }
+  .note small { font-family: var(--mono); font-size: 11px; color: rgba(43,33,27,.6); display: flex; justify-content: space-between; gap: 6px; }
+  .note.p, .pad-note.p { --pc: #f8b9c4; } .note.g, .pad-note.g { --pc: #c9e6a6; } .note.b, .pad-note.b { --pc: #b7dcef; }
+  .note.new { animation: stick .9s cubic-bezier(.2,1.3,.4,1) both; }
+  .note.mine::after { content: "내 메모"; position: absolute; right: 8px; top: 6px; font-family: var(--mono); font-size: 10px; color: rgba(43,33,27,.55); }
+  .note.ex::after { content: "예시"; position: absolute; right: 8px; top: 6px; font-family: var(--mono); font-size: 10px; color: rgba(43,33,27,.45); }
+  .wall-notes .note { opacity: 0; }
+  .wall-notes.in .note { animation: drop .7s cubic-bezier(.2,1.2,.4,1) both; animation-delay: calc(var(--i, 0) * 60ms); }
+  .wall-notes.in .note.new { animation: stick .9s cubic-bezier(.2,1.3,.4,1) both; }
+  @keyframes drop { from { opacity: 0; transform: translateY(-24px) rotate(calc(var(--r) * 3)); } to { opacity: 1; transform: rotate(var(--r)); } }
+  @keyframes stick {
+    0% { opacity: 0; transform: translate(-60px, -80px) rotate(-14deg) scale(1.35); box-shadow: 0 40px 50px -20px rgba(0,0,0,.6); }
+    60% { opacity: 1; transform: translate(0, 4px) rotate(calc(var(--r) * 1.4)) scale(.98); }
+    100% { opacity: 1; transform: rotate(var(--r)) scale(1); }
+  }
+  @media (max-width: 980px) {
+    .dreams { grid-template-columns: 1fr 1fr; }
+    .road { display: none; }
+    .board-grid { grid-template-columns: 1fr; }
+    .pad { position: static; max-width: 420px; }
+  }
+  @media (max-width: 680px) {
+    .future-band { margin-top: 64px; padding: 56px 0 64px; }
+    .dreams { grid-template-columns: 1fr; gap: 22px; }
+    .dream { min-height: 0; }
+    .wall-notes { grid-template-columns: 1fr 1fr; gap: 16px 12px; }
+    .note p { font-size: 14.5px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .dream, .road path { transition: none; opacity: 1; transform: none; clip-path: none; }
+    .wall-notes .note, .note.new { animation: none !important; opacity: 1; }
+  }
 
   /* ── visit ── */
   .visit { display: grid; grid-template-columns: 1.1fr 1fr 1fr 1fr; border-top: 2px solid var(--ink); border-bottom: 1px solid var(--line); }
@@ -248,7 +343,6 @@
     .m-voice, .m-box { grid-column: span 6; }
     .m-space { grid-column: span 12; }
     .m-space .ph { aspect-ratio: 16 / 7; grid-template-rows: none; grid-template-columns: 1fr 1fr; }
-    .future { grid-template-columns: 1fr 1fr; }
     .videos { grid-template-columns: 1fr; }
     .visit { grid-template-columns: 1fr 1fr; }
     .visit div:nth-child(3) { padding-left: 0; border-left: 0; }
@@ -280,8 +374,6 @@
     .reel-head { flex-wrap: wrap; gap: 2px 10px; }
     .reel-head h3 { font-size: 17px; }
     .reel-head .nav { display: none; }
-    .future { grid-template-columns: 1fr; }
-    .dream { min-height: 0; }
     .visit { grid-template-columns: 1fr; }
     .visit div, .visit div + div { padding: 14px 0; border-left: 0; }
     .visit div + div { border-top: 1px solid var(--line); }
@@ -296,8 +388,8 @@
     <a class="logo" href="#">b.books<small>비북스</small></a>
     <nav aria-label="바로가기">
       <a href="#now">지금</a>
-      <a href="#stage">무대</a>
-      <a href="#next">앞으로</a>
+      <a href="#stage">아카이브</a>
+      <a href="#next">미래</a>
       <a href="#visit">찾아오기</a>
       <a class="hide-s" href="https://www.instagram.com/b_books2026/" target="_blank" rel="noopener">Instagram</a>
       <a class="hide-s" href="https://www.youtube.com/@bbooks-wonmi" target="_blank" rel="noopener">YouTube</a>
@@ -310,9 +402,9 @@
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <p class="label">Bucheon · Wonmi-dong · Local Bookshop</p>
-          <h1>원미동에서<br>책으로 <em>모입니다.</em></h1>
-          <p class="sub">책을 고르고, 함께 읽고, 작가를 만나고, 밤새 머무는 동네책방.</p>
+          <p class="label">Bucheon · Wonmi-dong · 0.1평 공유서점</p>
+          <h1>100명의 점주가 만드는<br><em>100개의 큐레이션</em></h1>
+          <p class="sub">서가 한 칸, 0.1평씩을 나눠 가진 100명의 점주가 저마다의 취향으로 책을 고릅니다. 세상에서 가장 작은 서점들이 모여 하나의 동네책방이 된 곳, 부천 원미동 비북스입니다.</p>
         </div>
         <figure class="print tape">
           <img src="images/shelves.jpg" width="1600" height="900" alt="비북스 매장. 벽을 따라 칸칸이 나뉜 나무 서가">
@@ -320,11 +412,11 @@
         </figure>
       </div>
 
-      <div class="route" aria-label="부천에서 동네책방까지">
-        <div class="stop"><span class="en">BUCHEON</span><b>부천</b><span>책 읽는 도시</span></div>
-        <div class="stop"><span class="en">WONMI-DONG</span><b>원미동</b><span>소설 속 그 동네, 원미구청 맞은편</span></div>
-        <div class="stop"><span class="en">LOCAL</span><b>로컬</b><span>이웃이 모임을 열고 서가를 채웁니다</span></div>
-        <div class="stop"><span class="en">BOOKSHOP</span><b>동네책방</b><span>그 모든 것이 모이는 곳, 비북스</span></div>
+      <div class="route" aria-label="비북스의 네 가지 키워드">
+        <div class="stop"><span class="en">01 · LOCAL</span><b>부천 원미동</b><span>『원미동 사람들』의 거리, 원미구청 맞은편 지하 책방</span></div>
+        <div class="stop"><span class="en">02 · CURATION</span><b>100개의 큐레이션</b><span>104칸의 0.1평 서점, 칸마다 다른 주인과 취향</span></div>
+        <div class="stop"><span class="en">03 · CULTURE</span><b>복합 문화 공간</b><span>모임 · 북토크 · 밤샘 독서 · 마켓 · 대관</span></div>
+        <div class="stop"><span class="en">04 · NETWORK</span><b>동네책방 + 네트워크</b><span>점주와 작가, 이웃과 책방을 잇는 연결</span></div>
       </div>
     </div>
   </section>
@@ -332,8 +424,8 @@
   <section class="sec" id="now">
     <div class="wrap">
       <div class="sec-head">
-        <h2><small>NOW · 지금 비북스에서</small>일곱 가지 방법으로<br>책 곁에 모여요</h2>
-        <p>● 표시는 각 프로그램이 닿아 있는<br>부천 · 원미동 · 로컬 · 동네책방</p>
+        <h2><small>NOW · 지금 비북스에서는</small>책 한 권으로 시작해<br>이웃이 되는 일곱 가지 방법</h2>
+        <p>● 각 프로그램이 닿아 있는 키워드<br>로컬 · 큐레이션 · 문화공간 · 네트워크</p>
       </div>
 
       <div class="bento">
@@ -344,7 +436,7 @@
             <h3>비모임</h3>
             <p>0.1평 점주들이 직접 모임장이 되어 여는 작은 문화클래스. 독서, 드로잉, 인형 만들기, 티 블렌딩, 편지까지.</p>
             <div class="chips"><span>OFF-BOOK</span><span>목요 북클럽</span><span>클래식 감상</span><span>『토지』 완독</span><span>한 사람을 위한 편지</span></div>
-            <div class="foot"><span class="ties"><i></i><i></i><i class="on"></i><i class="on"></i><em>로컬 · 동네책방</em></span><span class="go">이번 달 모임</span></div>
+            <div class="foot"><span class="ties"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><em>로컬 · 큐레이션 · 문화공간</em></span><span class="go">이번 달 모임</span></div>
           </div>
         </a>
 
@@ -354,7 +446,7 @@
             <div class="meta"><span class="en">b.am 密 on</span><span class="when">23:00 → 06:00</span></div>
             <h3>밤밀온</h3>
             <p>잠들지 않는 서점. 밤 11시에 들어와 아침 6시까지, 침낭을 펴고 테마가 있는 밤을 책과 함께 보냅니다.</p>
-            <div class="foot"><span class="ties"><i></i><i></i><i></i><i class="on"></i><em>동네책방</em></span><span class="go">다음 밤</span></div>
+            <div class="foot"><span class="ties"><i></i><i></i><i class="on"></i><i></i><em>문화공간</em></span><span class="go">다음 밤</span></div>
           </div>
         </a>
 
@@ -364,7 +456,7 @@
             <div class="meta"><span class="en">b.talks</span><span class="when">매달 · 작가와의 만남</span></div>
             <h3>비톡스</h3>
             <p>작가를 동네책방으로 초대합니다. 서가 사이에 의자를 놓고, 책 이야기를 가까이서.</p>
-            <div class="foot"><span class="ties"><i class="on"></i><i></i><i></i><i class="on"></i><em>부천 · 동네책방</em></span><span class="go">비모임에서 신청</span></div>
+            <div class="foot"><span class="ties"><i></i><i></i><i class="on"></i><i class="on"></i><em>문화공간 · 네트워크</em></span><span class="go">비모임에서 신청</span></div>
           </div>
         </a>
 
@@ -377,7 +469,7 @@
             <div class="meta"><span class="en">Wonmi-dong Book Club</span><span class="when">매주 월–목 13:30</span></div>
             <h3>원미동 사람들 독서클럽</h3>
             <p>양귀자 『원미동 사람들』의 무대에서 『원미동 사람들』을 읽습니다. 요일마다 다른 책방지기와 매주 연작 한 편씩, 때로는 소설 속 동네를 걷습니다.</p>
-            <div class="foot"><span class="ties"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><em>부천 · 원미동 · 로컬 · 동네책방</em></span><span class="go">영상 보기</span></div>
+            <div class="foot"><span class="ties"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><em>로컬 · 큐레이션 · 문화공간 · 네트워크</em></span><span class="go">영상 보기</span></div>
           </div>
         </a>
 
@@ -387,7 +479,7 @@
             <div class="meta"><span class="en">b.voice</span><span class="when">회차제</span></div>
             <h3>비보이스</h3>
             <p>한 권의 책, 한 사람의 목소리. 0.1평 점주이자 작가, 감독이 직접 꺼내는 이야기.</p>
-            <div class="foot"><span class="ties"><i></i><i></i><i class="on"></i><i class="on"></i></span><span class="go">비모임에서 신청</span></div>
+            <div class="foot"><span class="ties"><i></i><i class="on"></i><i class="on"></i><i></i><em>큐레이션 · 문화공간</em></span><span class="go">비모임에서 신청</span></div>
           </div>
         </a>
 
@@ -397,7 +489,7 @@
             <div class="meta"><span class="en">b.box</span><span class="when">계절마다 · 다음은 연말</span></div>
             <h3>비박스</h3>
             <p>0.1평 서점들이 박스 하나씩 들고 매장 곳곳으로 걸어 나오는 북 &amp; 플리마켓. 공연과 체험도 함께.</p>
-            <div class="foot"><span class="ties"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="go">비박스 소식</span></div>
+            <div class="foot"><span class="ties"><i class="on"></i><i class="on"></i><i></i><i class="on"></i><em>로컬 · 큐레이션 · 네트워크</em></span><span class="go">비박스 소식</span></div>
           </div>
         </a>
 
@@ -410,7 +502,7 @@
             <div class="meta"><span class="en">b.space</span><span class="when">상시 예약</span></div>
             <h3>대관</h3>
             <p>세미나실 · 원목 테이블 · 작은 극장 같은 계단 좌석 · 1인실 · 전체 대관. 104개 서가 속 우리만의 아지트.</p>
-            <div class="foot"><span class="ties"><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="go">공간 보기</span></div>
+            <div class="foot"><span class="ties"><i class="on"></i><i></i><i class="on"></i><i></i><em>로컬 · 문화공간</em></span><span class="go">공간 보기</span></div>
           </div>
         </a>
       </div>
@@ -428,7 +520,7 @@
   <section class="sec" id="watch">
     <div class="wrap">
       <div class="sec-head">
-        <h2><small>WATCH · 영상으로 보는 비북스</small>먼저 둘러보세요</h2>
+        <h2><small>WATCH · 영상으로 보는 비북스</small>비북스를 소개합니다</h2>
         <p><a class="ul" href="https://www.youtube.com/@bbooks-wonmi" target="_blank" rel="noopener">비북스 유튜브 채널 →</a></p>
       </div>
       <div class="videos">
@@ -451,8 +543,8 @@
   <section class="sec" id="stage">
     <div class="wrap">
       <div class="sec-head">
-        <h2><small>STAGE · 지나온 무대</small>회차마다 한 장씩,<br>누르면 그날의 사진</h2>
-        <p>신청은 모두 <a class="ul" href="https://moim.bbooks.co.kr/" target="_blank" rel="noopener">비모임</a>에서</p>
+        <h2><small>ARCHIVE · 모임의 기록</small>지나온 모임들,<br>비북스 아카이브</h2>
+        <p>회차를 누르면 그날의 사진이 열립니다<br>신청은 모두 <a class="ul" href="https://moim.bbooks.co.kr/" target="_blank" rel="noopener">비모임</a>에서</p>
       </div>
       <div class="reel" data-reel="talks" style="--c: var(--c-talks)">
         <div class="reel-head"><span class="en">b.talks</span><h3>비톡스 · 작가와의 만남</h3><span class="nav"><button type="button" data-dir="-1" aria-label="이전">←</button><button type="button" data-dir="1" aria-label="다음">→</button></span></div>
@@ -483,38 +575,53 @@
     <button type="button" class="lb-arrow prev" aria-label="이전 사진">←</button><button type="button" class="lb-arrow next" aria-label="다음 사진">→</button>
   </div>
 
-  <section class="sec">
+  <section class="future-band" id="next">
     <div class="wrap">
-      <div class="sec-head">
-        <h2><small>ON THE WALL · 이번 달 비모임</small>요즘 벽에 붙은 포스터</h2>
-        <p>옆으로 넘겨 보세요 →</p>
+      <div class="sec-head light">
+        <h2><small>NEXT · 비북스의 미래</small>0.1평에서 시작해,<br>원미동의 내일로</h2>
+        <p>연필로 그려 둔 가안 네 장,<br>그리고 당신이 붙이는 한 장</p>
       </div>
-      <div class="wall">
-        <figure><img src="images/p/oct-offbook.jpg" alt="OFF-BOOK 포스터" loading="lazy"><figcaption>OFF-BOOK</figcaption></figure>
-        <figure><img src="images/p/oct-daon.jpg" alt="목요 북클럽 포스터" loading="lazy"><figcaption>목요 북클럽</figcaption></figure>
-        <figure><img src="images/p/oct-aunt.jpg" alt="그림책 읽어주는 이모 포스터" loading="lazy"><figcaption>그림책 읽어주는 이모</figcaption></figure>
-        <figure><img src="images/p/oct-classic.jpg" alt="클래식 음악 감상 모임 포스터" loading="lazy"><figcaption>클래식 음악 감상</figcaption></figure>
-        <figure><img src="images/p/oct-tea.jpg" alt="중국차 블렌딩 다회 포스터" loading="lazy"><figcaption>중국차 블렌딩 다회</figcaption></figure>
-        <figure><img src="images/p/toji.jpg" alt="토지 완독 챌린지 포스터" loading="lazy"><figcaption>『토지』 완독 챌린지</figcaption></figure>
-        <figure><img src="images/p/sep-pilsa.jpg" alt="일본어 명대사 필사 모임 포스터" loading="lazy"><figcaption>일본어 명대사 필사</figcaption></figure>
-        <figure><img src="images/p/letter.jpg" alt="한 사람을 위한 편지 포스터" loading="lazy"><figcaption>한 사람을 위한 편지</figcaption></figure>
-      </div>
-    </div>
-  </section>
 
-  <section class="sec" id="next">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2><small>NEXT · 앞으로 꿈꾸는 것</small>서가 밖으로,<br>동네 쪽으로</h2>
-        <p>연필로 그려 둔 가안</p>
+      <div class="roadmap">
+        <svg class="road" viewBox="0 0 1000 120" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M10 80 C 160 10, 300 120, 500 60 S 820 0, 990 70" />
+        </svg>
+        <div class="dreams">
+          <article class="dream" style="--d:0"><span class="pin"></span><span class="n">01</span><span class="st">거리</span><h3>원미동 사람들의 거리, 부천 문학의 중심으로</h3><p>소설 속 그 거리가 부천의 문화와 문학이 모이는 한복판이 되는 것.</p></article>
+          <article class="dream" style="--d:1"><span class="pin"></span><span class="n">02</span><span class="st">연결</span><h3>부천 동네책방 네트워크</h3><p>동네책방을 잇는 길 위에서 문화·예술·활동가들이 서로를 만나는 것.</p></article>
+          <article class="dream" style="--d:2"><span class="pin"></span><span class="n">03</span><span class="st">출판</span><h3>새롭게 쓰는 원미동 사람들</h3><p>지금 이 동네에 사는 사람들의 이야기를 로컬 출판으로 다시 씁니다.</p></article>
+          <article class="dream" style="--d:3"><span class="pin"></span><span class="n">04</span><span class="st">확산</span><h3>책방으로부터 시작되는 배움</h3><p>책방에서 배우고, 가르치고, 퍼져 나가 실제 삶을 풍요롭게 하는 활동.</p></article>
+        </div>
       </div>
-      <div class="future">
-        <div class="dream"><span class="n">01</span><span class="st">거리</span><h3>원미동 사람들의 거리, 부천 문학의 중심으로</h3><p>소설 속 그 거리가 부천의 문화와 문학이 모이는 한복판이 되는 것.</p></div>
-        <div class="dream"><span class="n">02</span><span class="st">연결</span><h3>부천 동네책방 네트워크</h3><p>동네책방을 잇는 길 위에서 문화·예술·활동가들이 서로를 만나는 것.</p></div>
-        <div class="dream"><span class="n">03</span><span class="st">출판</span><h3>새롭게 쓰는 원미동 사람들</h3><p>지금 이 동네에 사는 사람들의 이야기를 로컬 출판으로 다시 씁니다.</p></div>
-        <div class="dream"><span class="n">04</span><span class="st">확산</span><h3>책방으로부터 시작되는 배움</h3><p>책방에서 배우고, 가르치고, 퍼져 나가 실제 삶을 풍요롭게 하는 활동.</p></div>
+
+      <div class="board">
+        <div class="board-head">
+          <h3>당신이 꿈꾸는 서점의 미래를 붙여 주세요</h3>
+          <p class="board-count"><b id="fcount">0</b>장의 미래가 붙어 있어요</p>
+        </div>
+        <div class="board-grid">
+          <form class="pad" id="fform" autocomplete="off">
+            <label class="pad-note" id="fpad">
+              <span class="sr">서점의 미래</span>
+              <textarea id="ftext" maxlength="80" rows="5" placeholder="10년 뒤 비북스는…" required></textarea>
+              <span class="pad-len"><span id="flen">0</span>/80</span>
+            </label>
+            <div class="pad-row">
+              <input id="fname" maxlength="12" placeholder="이름 또는 별명 (선택)" aria-label="이름 또는 별명">
+              <div class="swatches" role="radiogroup" aria-label="포스트잇 색">
+                <button type="button" class="sw on" data-c="y" aria-label="노랑" aria-checked="true" role="radio"></button>
+                <button type="button" class="sw" data-c="p" aria-label="분홍" aria-checked="false" role="radio"></button>
+                <button type="button" class="sw" data-c="g" aria-label="연두" aria-checked="false" role="radio"></button>
+                <button type="button" class="sw" data-c="b" aria-label="하늘" aria-checked="false" role="radio"></button>
+              </div>
+            </div>
+            <input class="hp" id="fhp" tabindex="-1" autocomplete="off" aria-hidden="true">
+            <button class="stick-btn" type="submit">미래에 붙이기 📌</button>
+            <p class="pad-msg" id="fmsg" role="status"></p>
+          </form>
+          <div class="wall-notes" id="fwall" aria-live="polite"></div>
+        </div>
       </div>
-      <p class="future-line">언젠가 “원미동 사람들의 거리”가 <em>부천 문학의 이름</em>이 되는 날까지.</p>
     </div>
   </section>
 
@@ -632,6 +739,91 @@
       btn.innerHTML = ''; btn.appendChild(f); btn.style.cursor = 'default';
     }, { once: true });
   });
+
+  // 비북스의 미래 — 포스트잇 벽
+  // FUTURE_API에 Apps Script 웹 앱 주소를 넣으면 모든 방문자가 같은 벽을 공유합니다. 비어 있으면 이 브라우저에만 저장되는 체험 모드.
+  var FUTURE_API = '';
+  (function () {
+    var wall = document.getElementById('fwall'), form = document.getElementById('fform');
+    if (!wall || !form) return;
+    var text = document.getElementById('ftext'), name = document.getElementById('fname'), pad = document.getElementById('fpad');
+    var msg = document.getElementById('fmsg'), len = document.getElementById('flen'), countEl = document.getElementById('fcount');
+    var color = 'y', total = 0, KEY = 'bbooks-future-mine';
+    var EXAMPLES = [
+      { text: '원미동 골목마다 작은 책방 간판이 하나씩 늘어나면 좋겠어요', name: '비북스', color: 'y' },
+      { text: '『원미동 사람들』 속 장소를 따라 걷는 문학 산책길', name: '원미동북클럽', color: 'g' },
+      { text: '밤밀온이 매주 열리는 잠들지 않는 서점', name: '올빼미', color: 'b' },
+      { text: '0.1평 점주들이 같이 만든 책이 서가에 꽂히는 날', name: 'B-41', color: 'p' }
+    ];
+    function mine() { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { return []; } }
+    function saveMine(list) { try { localStorage.setItem(KEY, JSON.stringify(list.slice(-30))); } catch (e) {} }
+    function rot(s) { var h = 0; for (var i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0; return ((Math.abs(h) % 9) - 4) * 0.9; }
+    function esc2(s) { return String(s || '').replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+    function noteEl(n, i, cls) {
+      var d = document.createElement('div');
+      d.className = 'note ' + (/^[ypgb]$/.test(n.color) ? n.color : 'y') + (cls ? ' ' + cls : '');
+      d.style.setProperty('--r', rot(n.text + (n.ts || '')) + 'deg');
+      d.style.setProperty('--i', i);
+      var when = n.ts ? new Date(n.ts) : null;
+      d.innerHTML = '<p>' + esc2(n.text) + '</p><small><span>' + esc2(n.name || '익명') + '</span><span>' + (when && !isNaN(when) ? (when.getMonth() + 1) + '.' + when.getDate() : '') + '</span></small>';
+      return d;
+    }
+    function setCount(n) { total = n; countEl.textContent = n; }
+    function render(list, opts) {
+      wall.innerHTML = '';
+      list.forEach(function (n, i) { wall.appendChild(noteEl(n, i, n._cls)); });
+    }
+    function load() {
+      if (!FUTURE_API) {
+        var m = mine().map(function (n) { n._cls = 'mine'; return n; });
+        var ex = EXAMPLES.map(function (n) { n._cls = 'ex'; return n; });
+        render(m.slice().reverse().concat(ex)); setCount(m.length + ex.length); return;
+      }
+      fetch(FUTURE_API + '?action=list').then(function (r) { return r.json(); }).then(function (d) {
+        var ids = mine().map(function (n) { return n.id; });
+        var list = (d.notes || []).map(function (n) { if (ids.indexOf(n.id) > -1) n._cls = 'mine'; return n; });
+        render(list); setCount(d.count || list.length);
+      }).catch(function () { msg.textContent = '벽을 불러오지 못했어요. 잠시 뒤 다시 열어 주세요.'; });
+    }
+    // 화면에 들어오면 로드맵 · 메모 애니메이션
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: .2 });
+      io.observe(document.querySelector('.roadmap')); io.observe(wall);
+    } else { document.querySelector('.roadmap').classList.add('in'); wall.classList.add('in'); }
+
+    text.addEventListener('input', function () { len.textContent = text.value.length; });
+    form.querySelectorAll('.sw').forEach(function (b) {
+      b.addEventListener('click', function () {
+        form.querySelectorAll('.sw').forEach(function (x) { x.classList.remove('on'); x.setAttribute('aria-checked', 'false'); });
+        b.classList.add('on'); b.setAttribute('aria-checked', 'true');
+        color = b.dataset.c; pad.className = 'pad-note ' + color;
+      });
+    });
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var v = text.value.trim().replace(/\s+/g, ' ');
+      if (v.length < 2) { msg.textContent = '두 글자 이상 적어 주세요.'; return; }
+      if (document.getElementById('fhp').value) return;
+      var n = { text: v, name: name.value.trim().slice(0, 12), color: color, ts: new Date().toISOString() };
+      var btn = form.querySelector('.stick-btn'); btn.disabled = true; msg.textContent = '붙이는 중…';
+      function stuck(saved) {
+        var list = mine(); list.push(saved); saveMine(list);
+        var el = noteEl(saved, 0, 'mine new'); el.style.opacity = 1;
+        wall.insertBefore(el, wall.firstChild); setCount(total + 1);
+        text.value = ''; len.textContent = '0'; btn.disabled = false;
+        msg.textContent = '비북스의 미래에 한 장이 붙었어요. 고맙습니다!';
+        el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+      }
+      if (!FUTURE_API) { setTimeout(function () { stuck(n); }, 250); return; }
+      fetch(FUTURE_API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ action: 'add', text: n.text, name: n.name, color: n.color, hp: '' }) })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { if (!d.ok) throw new Error(d.error || 'fail'); n.id = d.id; stuck(n); })
+        .catch(function (err) { btn.disabled = false; msg.textContent = err.message === 'busy' ? '잠시 뒤 다시 붙여 주세요.' : '붙이지 못했어요. 잠시 뒤 다시 시도해 주세요.'; });
+    });
+    load();
+  })();
 </script>
 </body>
 </html>
