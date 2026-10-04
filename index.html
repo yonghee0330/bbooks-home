@@ -183,7 +183,9 @@
   .reel-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; }
   .reel-head .en { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; font-weight: 700; color: var(--c); text-transform: uppercase; }
   .reel-head h3 { font-size: 20px; letter-spacing: -.02em; }
-  .reel-head .nav { margin-left: auto; display: flex; gap: 6px; }
+  .reel-head .nav { display: flex; gap: 6px; }
+  .reel-all { margin-left: auto; font-family: var(--mono); font-size: 12.5px; border-bottom: 1px solid var(--c); white-space: nowrap; }
+  .reel-head h3 + .nav { margin-left: auto; }
   .reel-head button { width: 36px; height: 36px; border: 1px solid var(--ink); background: transparent; font-family: var(--mono); font-size: 15px; cursor: pointer; color: var(--ink); }
   .reel-head button:hover { background: var(--ink); color: var(--paper); }
   .track { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 10px; scrollbar-width: thin; }
@@ -374,6 +376,7 @@
     .reel-head { flex-wrap: wrap; gap: 2px 10px; }
     .reel-head h3 { font-size: 17px; }
     .reel-head .nav { display: none; }
+    .reel-all { margin-left: 0; flex-basis: 100%; }
     .visit { grid-template-columns: 1fr; }
     .visit div, .visit div + div { padding: 14px 0; border-left: 0; }
     .visit div + div { border-top: 1px solid var(--line); }
@@ -440,27 +443,27 @@
           </div>
         </a>
 
-        <a class="mod m-bam" href="https://bam.bbooks.co.kr/" target="_blank" rel="noopener">
+        <a class="mod m-bam" href="bam/">
           <div class="ph"><img src="images/m-bam.jpg" width="800" height="1000" alt="밤의 서점, 스탠드 아래 테이블에서 책을 읽는 사람들" loading="lazy"></div>
           <div class="body">
             <div class="meta"><span class="en">b.am 密 on</span><span class="when">23:00 → 06:00</span></div>
             <h3>밤밀온</h3>
             <p>잠들지 않는 서점. 밤 11시에 들어와 아침 6시까지, 침낭을 펴고 테마가 있는 밤을 책과 함께 보냅니다.</p>
-            <div class="foot"><span class="ties"><i></i><i></i><i class="on"></i><i></i><em>문화공간</em></span><span class="go">다음 밤</span></div>
+            <div class="foot"><span class="ties"><i></i><i></i><i class="on"></i><i></i><em>문화공간</em></span><span class="go">지난 밤 · 다음 밤</span></div>
           </div>
         </a>
 
-        <a class="mod m-talks" href="https://moim.bbooks.co.kr/" target="_blank" rel="noopener">
+        <a class="mod m-talks" href="talks/">
           <div class="ph"><img src="images/btalks.jpg" width="1280" height="853" alt="서가 사이를 가득 채운 북토크 청중" loading="lazy"></div>
           <div class="body">
             <div class="meta"><span class="en">b.talks</span><span class="when">매달 · 작가와의 만남</span></div>
             <h3>비톡스</h3>
             <p>작가를 동네책방으로 초대합니다. 서가 사이에 의자를 놓고, 책 이야기를 가까이서.</p>
-            <div class="foot"><span class="ties"><i></i><i></i><i class="on"></i><i class="on"></i><em>문화공간 · 네트워크</em></span><span class="go">비모임에서 신청</span></div>
+            <div class="foot"><span class="ties"><i></i><i></i><i class="on"></i><i class="on"></i><em>문화공간 · 네트워크</em></span><span class="go">지난 기록 · 다음 회차</span></div>
           </div>
         </a>
 
-        <a class="mod m-wonmi" href="https://www.youtube.com/watch?v=gM2q676UGJc&amp;t=74s" target="_blank" rel="noopener">
+        <a class="mod m-wonmi" href="https://www.youtube.com/watch?v=gM2q676UGJc" target="_blank" rel="noopener">
           <div class="ph">
             <span class="stamp">2026 책읽는 대한민국<br>북클럽 리그</span>
             <img src="images/m-wonmi.jpg" width="1100" height="618" alt="서가 앞에서 『원미동 사람들』을 함께 읽는 원미동북클럽" loading="lazy">
@@ -483,13 +486,13 @@
           </div>
         </a>
 
-        <a class="mod m-box" href="https://box.bbooks.co.kr/" target="_blank" rel="noopener">
+        <a class="mod m-box" href="box/">
           <div class="ph"><img src="images/m-box.jpg" width="800" height="600" alt="첫 번째 b.box day, 서가 사이를 가득 메운 사람들" loading="lazy"></div>
           <div class="body">
             <div class="meta"><span class="en">b.box</span><span class="when">계절마다 · 다음은 연말</span></div>
             <h3>비박스</h3>
             <p>0.1평 서점들이 박스 하나씩 들고 매장 곳곳으로 걸어 나오는 북 &amp; 플리마켓. 공연과 체험도 함께.</p>
-            <div class="foot"><span class="ties"><i class="on"></i><i class="on"></i><i></i><i class="on"></i><em>로컬 · 큐레이션 · 네트워크</em></span><span class="go">비박스 소식</span></div>
+            <div class="foot"><span class="ties"><i class="on"></i><i class="on"></i><i></i><i class="on"></i><em>로컬 · 큐레이션 · 네트워크</em></span><span class="go">지난 마켓 · 다음 마켓</span></div>
           </div>
         </a>
 
@@ -531,7 +534,7 @@
           <figcaption><b>b.books 공간을 소개합니다</b><span>세미나실 · 원목 테이블 · 계단 좌석 · 1인실 · 2:17</span></figcaption>
         </figure>
         <figure class="video">
-          <button class="yt" type="button" data-id="gM2q676UGJc" data-t="74" aria-label="원미동북클럽 영상 재생">
+          <button class="yt" type="button" data-id="gM2q676UGJc" data-t="0" aria-label="원미동북클럽 영상 재생">
             <img src="images/video/gM2q676UGJc.jpg" width="1280" height="720" alt="" loading="lazy"><span class="play" aria-hidden="true"></span>
           </button>
           <figcaption><b>원미동 사람들의 원미동북클럽</b><span>2026 책읽는 대한민국 북클럽 리그 · 4:19</span></figcaption>
@@ -547,7 +550,7 @@
         <p>회차를 누르면 그날의 사진이 열립니다<br>신청은 모두 <a class="ul" href="https://moim.bbooks.co.kr/" target="_blank" rel="noopener">비모임</a>에서</p>
       </div>
       <div class="reel" data-reel="talks" style="--c: var(--c-talks)">
-        <div class="reel-head"><span class="en">b.talks</span><h3>비톡스 · 작가와의 만남</h3><span class="nav"><button type="button" data-dir="-1" aria-label="이전">←</button><button type="button" data-dir="1" aria-label="다음">→</button></span></div>
+        <div class="reel-head"><span class="en">b.talks</span><h3>비톡스 · 작가와의 만남</h3><a class="reel-all" href="talks/">전체 기록 · 다음 회차 →</a><span class="nav"><button type="button" data-dir="-1" aria-label="이전">←</button><button type="button" data-dir="1" aria-label="다음">→</button></span></div>
         <div class="track"></div>
       </div>
       <div class="reel" data-reel="voice" style="--c: var(--c-voice)">
@@ -555,11 +558,11 @@
         <div class="track"></div>
       </div>
       <div class="reel" data-reel="bam" style="--c: var(--c-bam)">
-        <div class="reel-head"><span class="en">b.am 密 on</span><h3>밤밀온 · 지나간 밤</h3><span class="nav"><button type="button" data-dir="-1" aria-label="이전">←</button><button type="button" data-dir="1" aria-label="다음">→</button></span></div>
+        <div class="reel-head"><span class="en">b.am 密 on</span><h3>밤밀온 · 지나간 밤</h3><a class="reel-all" href="bam/">전체 기록 · 다음 회차 →</a><span class="nav"><button type="button" data-dir="-1" aria-label="이전">←</button><button type="button" data-dir="1" aria-label="다음">→</button></span></div>
         <div class="track"></div>
       </div>
       <div class="reel" data-reel="box" style="--c: var(--c-box)">
-        <div class="reel-head"><span class="en">b.box</span><h3>비박스 · 박스 하나 들고</h3><span class="nav"><button type="button" data-dir="-1" aria-label="이전">←</button><button type="button" data-dir="1" aria-label="다음">→</button></span></div>
+        <div class="reel-head"><span class="en">b.box</span><h3>비박스 · 박스 하나 들고</h3><a class="reel-all" href="box/">전체 기록 · 다음 회차 →</a><span class="nav"><button type="button" data-dir="-1" aria-label="이전">←</button><button type="button" data-dir="1" aria-label="다음">→</button></span></div>
         <div class="track"></div>
       </div>
       <div class="reel" data-reel="moim" style="--c: var(--c-moim)">
@@ -641,6 +644,7 @@
   </section>
 </main>
 
+<script src="data/programs.js"></script>
 <script>
   // 104칸 서가: 칸마다 프로그램 색을 섞어 채움 (빈칸 몇 개는 점선)
   (function () {
@@ -657,42 +661,11 @@
     el.innerHTML = html;
   })();
 
-  // 지나온 무대 — 회차 추가: 사진을 images/g/<키>/ 에 넣고 GALLERY와 REELS에 한 줄씩
-  var GALLERY = {"talks-04": ["images/g/talks-04/00.jpg", "images/g/talks-04/01.jpg", "images/g/talks-04/02.jpg", "images/g/talks-04/03.jpg", "images/g/talks-04/04.jpg", "images/g/talks-04/05.jpg", "images/g/talks-04/06.jpg", "images/g/talks-04/07.jpg"], "talks-05": ["images/g/talks-05/00.jpg", "images/g/talks-05/01.jpg", "images/g/talks-05/02.jpg", "images/g/talks-05/03.jpg", "images/g/talks-05/04.jpg", "images/g/talks-05/05.jpg", "images/g/talks-05/06.jpg", "images/g/talks-05/07.jpg"], "talks-07": ["images/g/talks-07/00.jpg", "images/g/talks-07/01.jpg", "images/g/talks-07/02.jpg", "images/g/talks-07/03.jpg", "images/g/talks-07/04.jpg", "images/g/talks-07/05.jpg", "images/g/talks-07/06.jpg", "images/g/talks-07/07.jpg", "images/g/talks-07/08.jpg"], "talks-08": ["images/g/talks-08/00.jpg", "images/g/talks-08/01.jpg", "images/g/talks-08/02.jpg", "images/g/talks-08/03.jpg", "images/g/talks-08/04.jpg", "images/g/talks-08/05.jpg", "images/g/talks-08/06.jpg", "images/g/talks-08/07.jpg", "images/g/talks-08/08.jpg"], "talks-09": ["images/g/talks-09/00.jpg", "images/g/talks-09/01.jpg", "images/g/talks-09/02.jpg", "images/g/talks-09/03.jpg", "images/g/talks-09/04.jpg", "images/g/talks-09/05.jpg", "images/g/talks-09/06.jpg", "images/g/talks-09/07.jpg"], "voice-01": ["images/g/voice-01/00.jpg", "images/g/voice-01/01.jpg", "images/g/voice-01/02.jpg", "images/g/voice-01/03.jpg", "images/g/voice-01/04.jpg", "images/g/voice-01/05.jpg", "images/g/voice-01/06.jpg", "images/g/voice-01/07.jpg", "images/g/voice-01/08.jpg", "images/g/voice-01/09.jpg"], "voice-02": ["images/g/voice-02/00.jpg", "images/g/voice-02/01.jpg", "images/g/voice-02/02.jpg", "images/g/voice-02/03.jpg", "images/g/voice-02/04.jpg", "images/g/voice-02/05.jpg", "images/g/voice-02/06.jpg", "images/g/voice-02/07.jpg", "images/g/voice-02/08.jpg", "images/g/voice-02/09.jpg", "images/g/voice-02/10.jpg", "images/g/voice-02/11.jpg", "images/g/voice-02/12.jpg", "images/g/voice-02/13.jpg", "images/g/voice-02/14.jpg"], "voice-03": ["images/g/voice-03/00.jpg", "images/g/voice-03/01.jpg", "images/g/voice-03/02.jpg", "images/g/voice-03/03.jpg", "images/g/voice-03/04.jpg", "images/g/voice-03/05.jpg", "images/g/voice-03/06.jpg", "images/g/voice-03/07.jpg"], "voice-04": ["images/g/voice-04/00.jpg", "images/g/voice-04/01.jpg", "images/g/voice-04/02.jpg", "images/g/voice-04/03.jpg", "images/g/voice-04/04.jpg", "images/g/voice-04/05.jpg", "images/g/voice-04/06.jpg", "images/g/voice-04/07.jpg"], "voice-05": ["images/g/voice-05/00.jpg"], "voice-06": ["images/g/voice-06/00.jpg"], "bam-01": ["images/g/bam-01/00.jpg", "images/g/bam-01/01.jpg", "images/g/bam-01/02.jpg", "images/g/bam-01/03.jpg", "images/g/bam-01/04.jpg", "images/g/bam-01/05.jpg", "images/g/bam-01/06.jpg", "images/g/bam-01/07.jpg", "images/g/bam-01/08.jpg", "images/g/bam-01/09.jpg", "images/g/bam-01/10.jpg", "images/g/bam-01/11.jpg", "images/g/bam-01/12.jpg", "images/g/bam-01/13.jpg", "images/g/bam-01/14.jpg", "images/g/bam-01/15.jpg", "images/g/bam-01/16.jpg", "images/g/bam-01/17.jpg", "images/g/bam-01/18.jpg"], "bam-02": ["images/g/bam-02/00.jpg", "images/g/bam-02/01.jpg", "images/g/bam-02/02.jpg", "images/g/bam-02/03.jpg", "images/g/bam-02/04.jpg", "images/g/bam-02/05.jpg", "images/g/bam-02/06.jpg", "images/g/bam-02/07.jpg", "images/g/bam-02/08.jpg", "images/g/bam-02/09.jpg", "images/g/bam-02/10.jpg"], "bam-03": ["images/g/bam-03/00.jpg", "images/g/bam-03/01.jpg", "images/g/bam-03/02.jpg", "images/g/bam-03/03.jpg", "images/g/bam-03/04.jpg", "images/g/bam-03/05.jpg", "images/g/bam-03/06.jpg", "images/g/bam-03/07.jpg", "images/g/bam-03/08.jpg", "images/g/bam-03/09.jpg", "images/g/bam-03/10.jpg"], "box-01": ["images/g/box-01/00.jpg", "images/g/box-01/01.jpg", "images/g/box-01/02.jpg", "images/g/box-01/03.jpg", "images/g/box-01/04.jpg", "images/g/box-01/05.jpg", "images/g/box-01/06.jpg", "images/g/box-01/07.jpg", "images/g/box-01/08.jpg", "images/g/box-01/09.jpg"], "box-flea": ["images/g/box-flea/00.jpg", "images/g/box-flea/01.jpg", "images/g/box-flea/02.jpg", "images/g/box-flea/03.jpg", "images/g/box-flea/04.jpg", "images/g/box-flea/05.jpg", "images/g/box-flea/06.jpg", "images/g/box-flea/07.jpg", "images/g/box-flea/08.jpg", "images/g/box-flea/09.jpg", "images/g/box-flea/10.jpg", "images/g/box-flea/11.jpg", "images/g/box-flea/12.jpg", "images/g/box-flea/13.jpg", "images/g/box-flea/14.jpg", "images/g/box-flea/15.jpg", "images/g/box-flea/16.jpg", "images/g/box-flea/17.jpg"], "box-02": ["images/g/box-02/00.jpg", "images/g/box-02/01.jpg", "images/g/box-02/02.jpg", "images/g/box-02/03.jpg", "images/g/box-02/04.jpg", "images/g/box-02/05.jpg", "images/g/box-02/06.jpg", "images/g/box-02/07.jpg", "images/g/box-02/08.jpg", "images/g/box-02/09.jpg", "images/g/box-02/10.jpg", "images/g/box-02/11.jpg", "images/g/box-02/12.jpg", "images/g/box-02/13.jpg", "images/g/box-02/14.jpg", "images/g/box-02/15.jpg", "images/g/box-02/16.jpg", "images/g/box-02/17.jpg", "images/g/box-02/18.jpg"], "moim-05": ["images/g/moim-05/00.jpg", "images/g/moim-05/01.jpg", "images/g/moim-05/02.jpg", "images/g/moim-05/03.jpg", "images/g/moim-05/04.jpg", "images/g/moim-05/05.jpg", "images/g/moim-05/06.jpg", "images/g/moim-05/07.jpg", "images/g/moim-05/08.jpg", "images/g/moim-05/09.jpg", "images/g/moim-05/10.jpg"], "moim-06": ["images/g/moim-06/00.jpg", "images/g/moim-06/01.jpg", "images/g/moim-06/02.jpg", "images/g/moim-06/03.jpg", "images/g/moim-06/04.jpg", "images/g/moim-06/05.jpg", "images/g/moim-06/06.jpg", "images/g/moim-06/07.jpg", "images/g/moim-06/08.jpg", "images/g/moim-06/09.jpg", "images/g/moim-06/10.jpg", "images/g/moim-06/11.jpg", "images/g/moim-06/12.jpg"], "moim-07": ["images/g/moim-07/00.jpg", "images/g/moim-07/01.jpg", "images/g/moim-07/02.jpg", "images/g/moim-07/03.jpg", "images/g/moim-07/04.jpg", "images/g/moim-07/05.jpg", "images/g/moim-07/06.jpg", "images/g/moim-07/07.jpg", "images/g/moim-07/08.jpg", "images/g/moim-07/09.jpg", "images/g/moim-07/10.jpg", "images/g/moim-07/11.jpg", "images/g/moim-07/12.jpg", "images/g/moim-07/13.jpg"], "moim-08": ["images/g/moim-08/00.jpg", "images/g/moim-08/01.jpg", "images/g/moim-08/02.jpg", "images/g/moim-08/03.jpg", "images/g/moim-08/04.jpg", "images/g/moim-08/05.jpg", "images/g/moim-08/06.jpg"], "wonmi": ["images/g/wonmi/00.jpg", "images/g/wonmi/01.jpg", "images/g/wonmi/02.jpg", "images/g/wonmi/03.jpg", "images/g/wonmi/04.jpg", "images/g/wonmi/05.jpg", "images/g/wonmi/06.jpg", "images/g/wonmi/07.jpg", "images/g/wonmi/08.jpg", "images/g/wonmi/09.jpg", "images/g/wonmi/10.jpg", "images/g/wonmi/11.jpg", "images/g/wonmi/12.jpg", "images/g/wonmi/13.jpg"]};
-  var REELS = {
-    talks: [
-      { g: 'talks-04', no: '2026.04', title: '은유 『해방의 밤』', sub: '오픈 기념 북토크' },
-      { g: 'talks-05', no: '2026.05', title: '박동수 『철학책 독서 모임』', sub: '낯선 사람과 낯선 책이 모일 때' },
-      { g: 'talks-07', no: '2026.07', title: '권혁란 『이름의 빈자리에』', sub: '비북스 × 한겨레출판 × 예스24' },
-      { g: 'talks-08', no: '2026.08', title: '이수영 『선을 넘는 북클럽』', sub: '비북스 × 메멘토 × 예스24' },
-      { g: 'talks-09', no: '2026.09', title: '김은영 『마음 놓고 쉬고 싶은 당신을 위한 필사 노트』', sub: '비북스 × 심심 × 예스24' }
-    ],
-    voice: [
-      { g: 'voice-01', no: 'EP.01', title: '어쩌다 보니, 독립출판', sub: '느린호수 & 앗트 · 6월' },
-      { g: 'voice-02', no: 'EP.02', title: '독립영화 〈드라이브〉 상영과 대화', sub: '정연 감독 · 7월' },
-      { g: 'voice-03', no: 'EP.03', title: '소중한 나에게', sub: 'B-41 이유진서가 · 7월' },
-      { g: 'voice-04', no: 'EP.04', title: '아들러 심리학이 선물한 8가지 행복', sub: 'B-56 아심적중 · 8월' },
-      { g: 'voice-05', no: 'EP.05', title: '언니와 칸타빌레', sub: '나의 소리를 찾아서 · 8월' },
-      { g: 'voice-06', no: 'EP.06', title: '개킹받는 당신을 위한 투덜투덜 욕TALK', sub: '8월' }
-    ],
-    bam: [
-      { g: 'bam-01', no: 'EP.01', title: '밤이 밀려온 서점은, 잠들지 않았다', sub: '5월 · 첫 번째 밤' },
-      { g: 'bam-02', no: 'EP.02', title: '추·미·스의 밤', sub: '6월 · 추리 미스터리 스릴러' },
-      { g: 'bam-03', no: 'EP.03', title: '한여름 밤의 책방', sub: '7월 · A Midsummer Night’s Bookstore' }
-    ],
-    box: [
-      { g: 'box-01', no: '1st', title: '첫 번째 b.box day', sub: '2026.5.30 · 0.1평 마켓 & 교류회' },
-      { g: 'box-flea', no: 'OUT', title: 'b.flea Market', sub: '2026.7.4 · 부천문화재단 어린이축제' },
-      { g: 'box-02', no: '2nd', title: '두 번째 b.box day', sub: '2026.9.5 · 셀러 18팀' }
-    ],
-    moim: [
-      { g: 'wonmi', no: 'NOW', title: '원미동북클럽', sub: '매주 월–목 13:30 · 『원미동 사람들』' },
-      { g: 'moim-05', no: '2026.05', title: '비모임 시작', sub: '숙숙 드로잉 · 영화 한 편, 이야기 한 잔' },
-      { g: 'moim-06', no: '2026.06', title: '책 속 캐릭터 인형 만들기', sub: '드로잉 숙숙 · 키링' },
-      { g: 'moim-07', no: '2026.07', title: '커스텀 티 · 미니북 · 영화', sub: '7월의 비모임' },
-      { g: 'moim-08', no: '2026.08', title: '필사 · 다꾸 · 여행 기록', sub: '8월의 비모임' }
-    ]
-  };
+  // 아카이브 줄 — 회차 데이터는 data/programs.js 한 곳에서 관리합니다
+  var GALLERY = window.BB_GALLERY || {}, REELS = {};
+  Object.keys(window.BB_PROGRAMS || {}).forEach(function (k) {
+    REELS[k] = (window.BB_PROGRAMS[k].episodes || []).map(function (e) { return { g: e.g, no: e.no, title: e.title, sub: e.meta }; });
+  });
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   document.querySelectorAll('.reel').forEach(function (reel) {
     var items = REELS[reel.dataset.reel] || [], track = reel.querySelector('.track');
@@ -742,7 +715,7 @@
 
   // 비북스의 미래 — 포스트잇 벽
   // FUTURE_API에 Apps Script 웹 앱 주소를 넣으면 모든 방문자가 같은 벽을 공유합니다. 비어 있으면 이 브라우저에만 저장되는 체험 모드.
-  var FUTURE_API = '';
+  var FUTURE_API = 'https://script.google.com/macros/s/AKfycbwckvzibI3_cTi0bCueq_FkF9SfsilOoVD0_iTvnzaVWEiUkv0w1vPT0oIUG1bsKFgrnw/exec';
   (function () {
     var wall = document.getElementById('fwall'), form = document.getElementById('fform');
     if (!wall || !form) return;
@@ -773,8 +746,9 @@
       wall.innerHTML = '';
       list.forEach(function (n, i) { wall.appendChild(noteEl(n, i, n._cls)); });
     }
+    var live = !!FUTURE_API;
     function load() {
-      if (!FUTURE_API) {
+      if (!live) {
         var m = mine().map(function (n) { n._cls = 'mine'; return n; });
         var ex = EXAMPLES.map(function (n) { n._cls = 'ex'; return n; });
         render(m.slice().reverse().concat(ex)); setCount(m.length + ex.length); return;
@@ -783,7 +757,7 @@
         var ids = mine().map(function (n) { return n.id; });
         var list = (d.notes || []).map(function (n) { if (ids.indexOf(n.id) > -1) n._cls = 'mine'; return n; });
         render(list); setCount(d.count || list.length);
-      }).catch(function () { msg.textContent = '벽을 불러오지 못했어요. 잠시 뒤 다시 열어 주세요.'; });
+      }).catch(function () { live = false; load(); });
     }
     // 화면에 들어오면 로드맵 · 메모 애니메이션
     if ('IntersectionObserver' in window) {
@@ -816,7 +790,7 @@
         msg.textContent = '비북스의 미래에 한 장이 붙었어요. 고맙습니다!';
         el.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
       }
-      if (!FUTURE_API) { setTimeout(function () { stuck(n); }, 250); return; }
+      if (!live) { setTimeout(function () { stuck(n); }, 250); return; }
       fetch(FUTURE_API, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ action: 'add', text: n.text, name: n.name, color: n.color, hp: '' }) })
         .then(function (r) { return r.json(); })
         .then(function (d) { if (!d.ok) throw new Error(d.error || 'fail'); n.id = d.id; stuck(n); })

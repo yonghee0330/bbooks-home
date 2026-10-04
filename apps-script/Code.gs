@@ -10,7 +10,10 @@ var SHEET = '미래';
 var COLORS = ['y', 'p', 'g', 'b'];
 var MAX_LIST = 300;
 
-function setup() {
+/** @OnlyCurrentDoc */
+function setup() { return sheet_(); }
+
+function sheet_() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var sh = ss.getSheetByName(SHEET) || ss.insertSheet(SHEET);
   if (sh.getLastRow() === 0) {
@@ -18,6 +21,7 @@ function setup() {
     sh.setFrozenRows(1);
     sh.setColumnWidth(3, 420);
   }
+  return sh;
 }
 
 function doGet(e) {
@@ -45,7 +49,7 @@ function doPost(e) {
   var lock = LockService.getScriptLock();
   lock.waitLock(10000);
   try {
-    var sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET);
+    var sh = sheet_();
     var id = Utilities.getUuid().slice(0, 8);
     sh.appendRow([new Date(), id, text, name, color, '']);
     cache.put(dupKey, '1', 600);
@@ -57,7 +61,7 @@ function doPost(e) {
 }
 
 function list_() {
-  var sh = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET);
+  var sh = sheet_();
   var rows = sh.getLastRow() > 1 ? sh.getRange(2, 1, sh.getLastRow() - 1, 6).getValues() : [];
   var notes = rows
     .filter(function (r) { return r[2] && String(r[5]).toUpperCase() !== 'Y'; })
