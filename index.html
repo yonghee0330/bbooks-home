@@ -756,7 +756,8 @@
       fetch(FUTURE_API + '?action=list').then(function (r) { return r.json(); }).then(function (d) {
         var ids = mine().map(function (n) { return n.id; });
         var list = (d.notes || []).map(function (n) { if (ids.indexOf(n.id) > -1) n._cls = 'mine'; return n; });
-        render(list); setCount(d.count || list.length);
+        var ex = list.length < 6 ? EXAMPLES.map(function (n) { n._cls = 'ex'; return n; }) : [];
+        render(list.concat(ex)); setCount(d.count || list.length);
       }).catch(function () { live = false; load(); });
     }
     // 화면에 들어오면 로드맵 · 메모 애니메이션
