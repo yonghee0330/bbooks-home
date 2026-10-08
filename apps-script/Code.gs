@@ -7,7 +7,7 @@
  * 설치: SETUP.md 참고. 배포 후 웹 앱 URL을 index.html의 FUTURE_API에 넣습니다.
  */
 var SHEET = '미래';
-var COLORS = ['y', 'p', 'g', 'b'];
+var COLORS = ['y', 'p', 'o', 'g', 'b', 'v'];
 var MAX_LIST = 300;
 
 /** @OnlyCurrentDoc */
